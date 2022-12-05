@@ -33,7 +33,6 @@ public class ErrorsOnALittleAboutYouTest extends BaseWebTest {
         invalidEmail();
 
     }
-
     private void invalidEmail() {
         aLittleAboutYouPage.setUserEmail("invalid email");
         assertThat(aLittleAboutYouPage.errorEmailMsg())
