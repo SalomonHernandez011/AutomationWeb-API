@@ -3,24 +3,13 @@ package comtest;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
-import com.codeborne.selenide.commands.TakeScreenshot;
-import com.codeborne.selenide.logevents.SelenideLogger;
-import com.codeborne.selenide.testng.ScreenShooter;
 import dataProvider.ConfigFileReader;
 
-import io.qameta.allure.selenide.AllureSelenide;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.testng.ITestContext;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
 
-import java.io.File;
-
-import static com.codeborne.selenide.Selenide.screenshot;
 import static constants.CommonProperties.URL;
 
 public class BaseWebTest {
@@ -45,6 +34,5 @@ public class BaseWebTest {
     @AfterMethod(alwaysRun = true)
     public void closeBrowser() {
         WebDriverRunner.getWebDriver().quit();
-        Configuration.reportsFolder = "test-result/reports";
     }
 }

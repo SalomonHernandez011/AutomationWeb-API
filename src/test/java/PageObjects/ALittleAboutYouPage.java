@@ -56,5 +56,8 @@ public class ALittleAboutYouPage extends BasePageObject {
         return emailError.getText();
     }
 
-
+    public LogInPage clickAlreadyMember(){
+        alreadyMemberLink.click();
+        return new LogInPage();
+    }
 }
