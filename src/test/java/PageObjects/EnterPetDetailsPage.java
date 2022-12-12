@@ -12,11 +12,11 @@ public class EnterPetDetailsPage extends BasePageObject {
     private final SelenideElement petDetailsTitle = $("div[class^='highway-9']");
     private final SelenideElement petDetailsContinueButton = $("#aapp-continue-button");
     private final SelenideElement petNameField = $("#aapp-pet-name-input");
-    private final SelenideElement dogOption = $("#option-dog");
+    private final SelenideElement dogOption = $("#option-dog-animaltype");
     private final SelenideElement catOption = $("#option-cat");
-    private final SelenideElement maleOption = $("#option-male");
+    private final SelenideElement maleOption = $("#option-male-gender");
     private final SelenideElement femaleOption = $("#option-cat");
-    private final SelenideElement uploadPhoto = $("#aapp-photo-pet-input");
+    private final SelenideElement uploadPhoto = $("input[id='aapp-photo-pet-input']");
     private final SelenideElement calendarOption = $("input[name='petsBirthDay']");
     private final SelenideElement breedOptions = $("#aapp-breed-auto-fill");
     private final SelenideElement spayedYes = $("");
@@ -32,7 +32,7 @@ public class EnterPetDetailsPage extends BasePageObject {
     private final SelenideElement setDays = $("input[placeholder='Days']");
 
     public EnterPetDetailsPage() {
-        assertTrue(isOpened(), "Landing Page is opened");
+        assertTrue(isOpened(), "Enter pet details is opened");
     }
 
     public boolean isOpened() {
