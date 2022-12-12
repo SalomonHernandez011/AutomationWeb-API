@@ -1,10 +1,8 @@
 package comtest.web;
 
+import PageObjects.*;
+import com.codeborne.selenide.ElementsCollection;
 import comtest.BaseWebTest;
-import PageObjects.ALittleAboutYouPage;
-import PageObjects.EnterPetDetailsPage;
-import PageObjects.LandingPage;
-import PageObjects.RegistrationPage;
 import com.codeborne.selenide.testng.ScreenShooter;
 import com.github.javafaker.Faker;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -21,6 +19,7 @@ public class OnBoardingFlowTest extends BaseWebTest {
     private RegistrationPage registrationPage;
     private ALittleAboutYouPage aLittleAboutYouPage;
     private EnterPetDetailsPage enterPetDetailsPage;
+    private ChooseAppointmentPage chooseAppointmentPage;
     private final String SecondScreenText = "Our TeleHealth team is ready to connect any time you have questions.";
     private final String ThirdStringText = "*Labs, Diagnostics, and Medications not included.";
     private String email = "salomontesting"+"+"+RandomStringUtils.randomNumeric(2)+"@gmail.com";
@@ -42,6 +41,7 @@ public class OnBoardingFlowTest extends BaseWebTest {
         selectLocationAndSignUp();
         isBreedEnabled();
         fillPetInformation();
+        selectAppointment();
 
     }
     private void callLandingPage(){
@@ -90,6 +90,20 @@ public class OnBoardingFlowTest extends BaseWebTest {
         enterPetDetailsPage.enterBreed(petBreed)
                 .selectBreedOption()
                 .selectContinue();
+    }
+
+    private void selectAppointment(){
+        chooseAppointmentPage = new ChooseAppointmentPage();
+        ElementsCollection options = chooseAppointmentPage.getAppointmentCollection();
+        for(int i = 0; i < options.size(); i++){
+            String s = options.get(i).getText().split(" ")[0];
+            options.get(i).click();
+            if(!chooseAppointmentPage.noAppointmentDisplayed()){
+                break;
+            }
+        }
+        chooseAppointmentPage.setAppointment()
+                .continueAppointment();
     }
 
 }
