@@ -4,11 +4,8 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import comtest.BasePageObject;
 import com.codeborne.selenide.SelenideElement;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
-import org.testng.Assert;
 
-import javax.lang.model.element.Element;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,11 +30,13 @@ public class ChooseAppointmentPage extends BasePageObject {
         return isPageObjectLoaded(healthyOption, chooseContinue);
     }
 
-    public List<String> getAppointmentOptions() {
-        List<String> options = new ArrayList<>();
-        for (int i = 0; i < datePicker.size(); i++) {
-            options.add(datePicker.get(i).getText());
-            datePicker.get(i).click();
+    public ElementsCollection getAppointmentOptions() {
+        ElementsCollection options = getAppointmentCollection();
+        for (int i = 0; i < options.size(); i++) {
+            options.get(i).click();
+            if (!noAppointmentDisplayed()) {
+                break;
+            }
         }
         return options;
     }

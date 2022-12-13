@@ -12,7 +12,6 @@ import org.testng.annotations.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@Listeners({ ScreenShooter.class})
 public class OnBoardingFlowTest extends BaseWebTest {
     Faker faker = new Faker();
     private LandingPage landingPage;
@@ -94,14 +93,7 @@ public class OnBoardingFlowTest extends BaseWebTest {
 
     private void selectAppointment(){
         chooseAppointmentPage = new ChooseAppointmentPage();
-        ElementsCollection options = chooseAppointmentPage.getAppointmentCollection();
-        for(int i = 0; i < options.size(); i++){
-            String s = options.get(i).getText().split(" ")[0];
-            options.get(i).click();
-            if(!chooseAppointmentPage.noAppointmentDisplayed()){
-                break;
-            }
-        }
+        chooseAppointmentPage.getAppointmentOptions();
         chooseAppointmentPage.setAppointment()
                 .continueAppointment();
     }
