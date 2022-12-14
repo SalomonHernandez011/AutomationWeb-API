@@ -2,7 +2,7 @@ package comtest.web;
 
 import PageObjects.ALittleAboutYouPage;
 import PageObjects.LandingPage;
-import PageObjects.RegistrationPage;
+import PageObjects.LocationPage;
 import comtest.BaseWebTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -12,7 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class ErrorsOnALittleAboutYouTest extends BaseWebTest {
     private LandingPage landingPage;
-    private RegistrationPage registrationPage;
+    private LocationPage locationPage;
     private ALittleAboutYouPage aLittleAboutYouPage;
     private final String errorEmailText = "invalid email address";
     @BeforeMethod
@@ -20,10 +20,10 @@ public class ErrorsOnALittleAboutYouTest extends BaseWebTest {
         landingPage = new LandingPage();
         landingPage.clickNext();
         landingPage.clickThirdOption();
-        registrationPage = landingPage.getStartedSelect()
+        locationPage = landingPage.getStartedSelect()
                 .clearZipField()
                 .setTextToZip("20002");
-       registrationPage.clickLocationCard()
+       locationPage.clickLocationCard()
                .clickNotAnEmergency();
         aLittleAboutYouPage = new ALittleAboutYouPage();
     }

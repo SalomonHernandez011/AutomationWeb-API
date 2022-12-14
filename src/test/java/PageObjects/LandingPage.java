@@ -3,7 +3,6 @@ package PageObjects;
 import comtest.BasePageObject;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import org.testng.Assert;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
@@ -20,6 +19,8 @@ public class LandingPage extends BasePageObject {
     private final SelenideElement thirdOption = $x("/html/body/div/div/div/div[2]/span[3]");
     private final SelenideElement getStarted = $("div.link");
     private final SelenideElement thirdTextOption = $("div[class^='text-sm']");
+    private final SelenideElement virtualAccessText = $("div[class=' w600 text-2xl']");
+    private final SelenideElement noExams = $("div[class='w600 text-2xl']");
 
     public LandingPage() {
         assertTrue(isOpened(), "Landing Page is opened");
@@ -46,9 +47,9 @@ public class LandingPage extends BasePageObject {
         return this;
     }
 
-    public RegistrationPage  getStartedSelect(){
+    public LocationPage getStartedSelect(){
         getStarted.click();
-        return new RegistrationPage();
+        return new LocationPage();
     }
 
     public String getTextFromLastScreen(){
@@ -56,6 +57,15 @@ public class LandingPage extends BasePageObject {
         return thirdTextOption.getText();
     }
 
+    public String getCaruselText(String text){
+        waitUntilElementCondition(virtualAccessText, Condition.exactText(text), longWait);
+        return virtualAccessText.getText();
+    }
+
+    public String getCaruselTextSecond(String text){
+        waitUntilElementCondition(noExams, Condition.exactText(text), longWait);
+        return noExams.getText();
+    }
 
     
 }

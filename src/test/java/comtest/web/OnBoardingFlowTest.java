@@ -1,13 +1,10 @@
 package comtest.web;
 
 import PageObjects.*;
-import com.codeborne.selenide.ElementsCollection;
 import comtest.BaseWebTest;
-import com.codeborne.selenide.testng.ScreenShooter;
 import com.github.javafaker.Faker;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static org.assertj.core.api.Assertions.allOf;
@@ -16,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class OnBoardingFlowTest extends BaseWebTest {
     Faker faker = new Faker();
     private LandingPage landingPage;
-    private RegistrationPage registrationPage;
+    private LocationPage locationPage;
     private ALittleAboutYouPage aLittleAboutYouPage;
     private EnterPetDetailsPage enterPetDetailsPage;
     private ChooseAppointmentPage chooseAppointmentPage;
@@ -24,6 +21,10 @@ public class OnBoardingFlowTest extends BaseWebTest {
     private CreatePasswordPage createPasswordPage;
     private final String SecondScreenText = "Our TeleHealth team is ready to connect any time you have questions.";
     private final String ThirdStringText = "*Labs, Diagnostics, and Medications not included.";
+    private final String virtualAccess = "24/7 Virtual Access";
+    private final String noExams = "No Exam Fees";
+    private final String locInstruction = "To find the location nearest to you, please enter your zip code or enable location services on your device.";
+    private final String zipText = "Enter Zip to display available locations";
     private String email = "salomontesting"+"+"+RandomStringUtils.randomNumeric(2)+"@gmail.com";
     private String petName = faker.name().firstName();
     private String firstName = faker.name().firstName();
@@ -50,27 +51,49 @@ public class OnBoardingFlowTest extends BaseWebTest {
         generatePassword();
 
     }
+
     private void callLandingPage(){
         landingPage.clickNext();
+
+        assertThat(landingPage.getCaruselText(virtualAccess))
+                .as("Text Should Match", virtualAccess)
+                .isEqualTo(virtualAccess);
+
         assertThat(landingPage.getTextFromSecondScreen())
                 .as("Text should match", SecondScreenText)
                 .isEqualTo(SecondScreenText);
     }
+
     private void thirdPageView(){
         landingPage.clickThirdOption();
+
+        assertThat(landingPage.getCaruselTextSecond(noExams))
+                .as("Text Should Match", noExams)
+                .isEqualTo(noExams);
+
         assertThat(landingPage.getTextFromLastScreen())
                 .as("Text Should Match", ThirdStringText)
                 .isEqualTo(ThirdStringText);
     }
+
     private void getStartedPage(){
-        registrationPage = landingPage.getStartedSelect()
+        locationPage = landingPage.getStartedSelect()
                 .clearZipField()
                 .setTextToZip("20002");
-        assertThat(registrationPage.locationCard())
+
+        assertThat(locationPage.subLocText())
+                .as("Text Should Match", locInstruction)
+                .isEqualTo(locInstruction);
+
+        assertThat(locationPage.subZipText())
+                .as("Text Should Match", zipText)
+                .isEqualTo(zipText);
+
+        assertThat(locationPage.locationCard())
                 .isTrue();
     }
     private void selectLocationAndSignUp(){
-        enterPetDetailsPage = registrationPage.clickLocationCard()
+        enterPetDetailsPage = locationPage.clickLocationCard()
                 .clickNotAnEmergency()
                 .setFirstNameField(firstName)
                 .setLastNameField(lastName)
