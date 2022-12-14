@@ -10,6 +10,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+import static org.assertj.core.api.Assertions.allOf;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class OnBoardingFlowTest extends BaseWebTest {
@@ -19,12 +20,16 @@ public class OnBoardingFlowTest extends BaseWebTest {
     private ALittleAboutYouPage aLittleAboutYouPage;
     private EnterPetDetailsPage enterPetDetailsPage;
     private ChooseAppointmentPage chooseAppointmentPage;
+    private ALittleMoreAboutPage aLittleMoreAboutPage;
+    private CreatePasswordPage createPasswordPage;
     private final String SecondScreenText = "Our TeleHealth team is ready to connect any time you have questions.";
     private final String ThirdStringText = "*Labs, Diagnostics, and Medications not included.";
     private String email = "salomontesting"+"+"+RandomStringUtils.randomNumeric(2)+"@gmail.com";
     private String petName = faker.name().firstName();
     private String firstName = faker.name().firstName();
     private String lastName = faker.name().lastName();
+    private String phoneNumber = faker.phoneNumber().cellPhone();
+    private String password = "1234asdF@";
     private String petBreed = "Collie";
 
     @BeforeMethod
@@ -41,6 +46,8 @@ public class OnBoardingFlowTest extends BaseWebTest {
         isBreedEnabled();
         fillPetInformation();
         selectAppointment();
+        fillMoreInformation();
+        generatePassword();
 
     }
     private void callLandingPage(){
@@ -95,7 +102,22 @@ public class OnBoardingFlowTest extends BaseWebTest {
         chooseAppointmentPage = new ChooseAppointmentPage();
         chooseAppointmentPage.getAppointmentOptions();
         chooseAppointmentPage.setAppointment()
-                .continueAppointment();
+                .continueAppointment()
+                .clickUnderstand();
+    }
+
+    private void fillMoreInformation(){
+        aLittleMoreAboutPage = new ALittleMoreAboutPage();
+        aLittleMoreAboutPage.setPhoneNumber(phoneNumber)
+                .checkAppointmentCheckbox()
+                .checkDiscountCheckBox()
+                .selectContinue();
+    }
+    private void generatePassword(){
+        createPasswordPage = new CreatePasswordPage();
+        createPasswordPage.setPassword(password)
+                .confirmPassword(password)
+                .nextPageContinue();
     }
 
 }

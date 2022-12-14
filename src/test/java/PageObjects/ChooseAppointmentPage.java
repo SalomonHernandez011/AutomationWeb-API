@@ -55,7 +55,8 @@ public class ChooseAppointmentPage extends BasePageObject {
     return noAppoinemtn.isDisplayed();
     }
 
-    public void continueAppointment(){
+    public AppointmentHeldPopUp continueAppointment(){
         appointmentContinue.click();
+        return new AppointmentHeldPopUp();
     }
 }
