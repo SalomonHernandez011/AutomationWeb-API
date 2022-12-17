@@ -13,6 +13,7 @@ public class LocationPage extends BasePageObject {
     private final SelenideElement locationText = $("div[class^='highway-9']");
     private final SelenideElement zipInput = $("#slp-zip-code-input");
     private final SelenideElement locationCard = $("#location-image-1");
+    private final SelenideElement clickLocation = $("div[id='location-content-1']");
     private final SelenideElement insLocText = $("div[class$='subtext']");
     private final SelenideElement zipText = $("span[class$='description-block']");
 
@@ -42,7 +43,7 @@ public class LocationPage extends BasePageObject {
     }
 
     public IsThisAnEmergencyPopUp clickLocationCard(){
-        locationCard.click();
+        clickLocation.click();
         return new IsThisAnEmergencyPopUp();
     }
 

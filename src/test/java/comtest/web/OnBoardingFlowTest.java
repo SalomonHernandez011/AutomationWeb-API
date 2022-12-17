@@ -19,6 +19,8 @@ public class OnBoardingFlowTest extends BaseWebTest {
     private ChooseAppointmentPage chooseAppointmentPage;
     private ALittleMoreAboutPage aLittleMoreAboutPage;
     private CreatePasswordPage createPasswordPage;
+    private DidYouGetOurTextPage didYouGetOurTextPage;
+    private YourMembershipPage yourMembershipPage;
     private final String SecondScreenText = "Our TeleHealth team is ready to connect any time you have questions.";
     private final String ThirdStringText = "*Labs, Diagnostics, and Medications not included.";
     private final String virtualAccess = "24/7 Virtual Access";
@@ -30,6 +32,7 @@ public class OnBoardingFlowTest extends BaseWebTest {
     private String firstName = faker.name().firstName();
     private String lastName = faker.name().lastName();
     private String phoneNumber = faker.phoneNumber().cellPhone();
+    private String smsText = faker.number().digits(4);
     private String password = "1234asdF@";
     private String petBreed = "Collie";
 
@@ -49,7 +52,8 @@ public class OnBoardingFlowTest extends BaseWebTest {
         selectAppointment();
         fillMoreInformation();
         generatePassword();
-
+        enterSmsText();
+        billingInfo();
     }
 
     private void callLandingPage(){
@@ -141,6 +145,17 @@ public class OnBoardingFlowTest extends BaseWebTest {
         createPasswordPage.setPassword(password)
                 .confirmPassword(password)
                 .nextPageContinue();
+    }
+
+    private void enterSmsText(){
+        didYouGetOurTextPage = new DidYouGetOurTextPage();
+        didYouGetOurTextPage.setSmsCode(smsText)
+                .clickContinueSMS();
+    }
+
+    private void billingInfo(){
+        yourMembershipPage = new YourMembershipPage();
+        yourMembershipPage.continueToPayment();
     }
 
 }
