@@ -7,6 +7,7 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import static constants.CommonTexts.SECOND_SCREEN_TEXT;
 import static org.assertj.core.api.Assertions.allOf;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -21,8 +22,8 @@ public class OnBoardingFlowTest extends BaseWebTest {
     private CreatePasswordPage createPasswordPage;
     private DidYouGetOurTextPage didYouGetOurTextPage;
     private YourMembershipPage yourMembershipPage;
-    private final String SecondScreenText = "Our TeleHealth team is ready to connect any time you have questions.";
-    private final String ThirdStringText = "*Labs, Diagnostics, and Medications not included.";
+    private final String secondScreenText = "Our TeleHealth team is ready to connect any time you have questions.";
+    private final String thirdStringText = "*Labs, Diagnostics, and Medications not included.";
     private final String virtualAccess = "24/7 Virtual Access";
     private final String noExams = "No Exam Fees";
     private final String locInstruction = "To find the location nearest to you, please enter your zip code or enable location services on your device.";
@@ -64,8 +65,8 @@ public class OnBoardingFlowTest extends BaseWebTest {
                 .isEqualTo(virtualAccess);
 
         assertThat(landingPage.getTextFromSecondScreen())
-                .as("Text should match", SecondScreenText)
-                .isEqualTo(SecondScreenText);
+                .as("Text should match", SECOND_SCREEN_TEXT.getCommonTexts())
+                .isEqualTo(SECOND_SCREEN_TEXT.getCommonTexts());
     }
 
     private void thirdPageView(){
@@ -76,8 +77,8 @@ public class OnBoardingFlowTest extends BaseWebTest {
                 .isEqualTo(noExams);
 
         assertThat(landingPage.getTextFromLastScreen())
-                .as("Text Should Match", ThirdStringText)
-                .isEqualTo(ThirdStringText);
+                .as("Text Should Match", thirdStringText)
+                .isEqualTo(thirdStringText);
     }
 
     private void getStartedPage(){
