@@ -53,8 +53,7 @@ public abstract class BasePageObject {
         }
         // Scroll into view for evidence collection
         if (condition != exist && element.exists()) {
-            // TODO: This is causing issues on mobile?
-            //element.scrollIntoView(true);
+            element.scrollIntoView(true);
         }
         return element.is(condition);
     }
