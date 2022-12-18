@@ -7,7 +7,7 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static constants.CommonTexts.SECOND_SCREEN_TEXT;
+import static constants.CommonTexts.*;
 import static org.assertj.core.api.Assertions.allOf;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -22,12 +22,6 @@ public class OnBoardingFlowTest extends BaseWebTest {
     private CreatePasswordPage createPasswordPage;
     private DidYouGetOurTextPage didYouGetOurTextPage;
     private YourMembershipPage yourMembershipPage;
-    private final String secondScreenText = "Our TeleHealth team is ready to connect any time you have questions.";
-    private final String thirdStringText = "*Labs, Diagnostics, and Medications not included.";
-    private final String virtualAccess = "24/7 Virtual Access";
-    private final String noExams = "No Exam Fees";
-    private final String locInstruction = "To find the location nearest to you, please enter your zip code or enable location services on your device.";
-    private final String zipText = "Enter Zip to display available locations";
     private String email = "salomontesting"+"+"+RandomStringUtils.randomNumeric(2)+"@gmail.com";
     private String petName = faker.name().firstName();
     private String firstName = faker.name().firstName();
@@ -60,9 +54,9 @@ public class OnBoardingFlowTest extends BaseWebTest {
     private void callLandingPage(){
         landingPage.clickNext();
 
-        assertThat(landingPage.getCaruselText(virtualAccess))
-                .as("Text Should Match", virtualAccess)
-                .isEqualTo(virtualAccess);
+        assertThat(landingPage.getCaruselText(VIRTUAL_ACCESS.getCommonTexts()))
+                .as("Text Should Match", VIRTUAL_ACCESS.getCommonTexts())
+                .isEqualTo(VIRTUAL_ACCESS.getCommonTexts());
 
         assertThat(landingPage.getTextFromSecondScreen())
                 .as("Text should match", SECOND_SCREEN_TEXT.getCommonTexts())
@@ -72,13 +66,13 @@ public class OnBoardingFlowTest extends BaseWebTest {
     private void thirdPageView(){
         landingPage.clickThirdOption();
 
-        assertThat(landingPage.getCaruselTextSecond(noExams))
-                .as("Text Should Match", noExams)
-                .isEqualTo(noExams);
+        assertThat(landingPage.getCaruselTextSecond(NO_EXAMS.getCommonTexts()))
+                .as("Text Should Match", NO_EXAMS.getCommonTexts())
+                .isEqualTo(NO_EXAMS.getCommonTexts());
 
         assertThat(landingPage.getTextFromLastScreen())
-                .as("Text Should Match", thirdStringText)
-                .isEqualTo(thirdStringText);
+                .as("Text Should Match", THIRD_SCREEN_TEXT.getCommonTexts())
+                .isEqualTo(THIRD_SCREEN_TEXT.getCommonTexts());
     }
 
     private void getStartedPage(){
@@ -87,12 +81,12 @@ public class OnBoardingFlowTest extends BaseWebTest {
                 .setTextToZip("20002");
 
         assertThat(locationPage.subLocText())
-                .as("Text Should Match", locInstruction)
-                .isEqualTo(locInstruction);
+                .as("Text Should Match", LOCATION_INSTRUCTIONS.getCommonTexts())
+                .isEqualTo(LOCATION_INSTRUCTIONS.getCommonTexts());
 
         assertThat(locationPage.subZipText())
-                .as("Text Should Match", zipText)
-                .isEqualTo(zipText);
+                .as("Text Should Match", ZIP_TEXT.getCommonTexts())
+                .isEqualTo(ZIP_TEXT.getCommonTexts());
 
         assertThat(locationPage.locationCard())
                 .isTrue();
@@ -158,5 +152,7 @@ public class OnBoardingFlowTest extends BaseWebTest {
         yourMembershipPage = new YourMembershipPage();
         yourMembershipPage.continueToPayment();
     }
+
+
 
 }
