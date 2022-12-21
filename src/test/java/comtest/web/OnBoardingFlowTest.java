@@ -22,7 +22,9 @@ public class OnBoardingFlowTest extends BaseWebTest {
     private CreatePasswordPage createPasswordPage;
     private DidYouGetOurTextPage didYouGetOurTextPage;
     private YourMembershipPage yourMembershipPage;
-    private String email = "salomontesting"+"+"+RandomStringUtils.randomNumeric(2)+"@gmail.com";
+    private AddPaymentPage addPaymentPage;
+    private GetCareLandingPage getCareLandingPage;
+    private String email = "salomontesting"+"+"+RandomStringUtils.randomNumeric(9)+"@gmail.com";
     private String petName = faker.name().firstName();
     private String firstName = faker.name().firstName();
     private String lastName = faker.name().lastName();
@@ -30,6 +32,7 @@ public class OnBoardingFlowTest extends BaseWebTest {
     private String smsText = faker.number().digits(4);
     private String password = "1234asdF@";
     private String petBreed = "Collie";
+    private String cardNumber = "4242424242424242";
 
     @BeforeMethod
     public void setup(){
@@ -49,6 +52,8 @@ public class OnBoardingFlowTest extends BaseWebTest {
         generatePassword();
         enterSmsText();
         billingInfo();
+        addPaymentInformation();
+        getCareLandingPage();
     }
 
     private void callLandingPage(){
@@ -153,6 +158,22 @@ public class OnBoardingFlowTest extends BaseWebTest {
         yourMembershipPage.continueToPayment();
     }
 
+    private void addPaymentInformation(){
+        addPaymentPage = new AddPaymentPage();
+        addPaymentPage.setNameOnCard("Salomon")
+                .setCardNumber(cardNumber)
+                .setExpiration("1223")
+                .setCvcCode("123")
+                .setAddressOnPayment("Address")
+                .setCityText("San Diego")
+                .openStateDropdown()
+                .setState("California")
+                .setZipCode("91910")
+                .selectContinue();
+    }
 
+    private void getCareLandingPage(){
+        getCareLandingPage = new GetCareLandingPage();
+    }
 
 }
