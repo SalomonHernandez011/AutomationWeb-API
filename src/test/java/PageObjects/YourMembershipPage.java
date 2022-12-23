@@ -12,7 +12,7 @@ public class YourMembershipPage extends BasePageObject {
     private final SelenideElement billingTimer = $("div[class='time-remaining']");
 
     public YourMembershipPage() {
-        assertTrue(isOpened(), "Landing Page is opened");
+        assertTrue(isOpened(), "Your Membership Page is opened");
     }
 
     public boolean isOpened() {
