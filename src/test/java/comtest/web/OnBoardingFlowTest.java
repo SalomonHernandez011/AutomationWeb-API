@@ -1,6 +1,9 @@
 package comtest.web;
 
 import PageObjects.*;
+import Util.TwilioOTPHandle;
+import com.codeborne.selenide.Selenide;
+import com.twilio.Twilio;
 import comtest.BaseWebTest;
 import com.github.javafaker.Faker;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -28,15 +31,18 @@ public class OnBoardingFlowTest extends BaseWebTest {
     private String petName = faker.name().firstName();
     private String firstName = faker.name().firstName();
     private String lastName = faker.name().lastName();
-    private String phoneNumber = faker.phoneNumber().cellPhone();
+    private String phoneNumber = "2059734909";
     private String smsText = faker.number().digits(4);
     private String password = "1234asdF@";
     private String petBreed = "Collie";
     private String cardNumber = "4242424242424242";
+    public static final String ACCOUNT_SID = "AC77079aa7c97a5bb8e3a7a34d0593ce1d";
+    public static final String AUTH_TOKEN = "ebff7b782d72fa019e0d62c5474bac9d";
 
     @BeforeMethod
     public void setup(){
         landingPage = new LandingPage();
+        Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
     }
 
     @Test
@@ -92,9 +98,9 @@ public class OnBoardingFlowTest extends BaseWebTest {
         assertThat(locationPage.subZipText())
                 .as("Text Should Match", ZIP_TEXT.getCommonTexts())
                 .isEqualTo(ZIP_TEXT.getCommonTexts());
-
-        assertThat(locationPage.locationCard())
-                .isTrue();
+//
+//        assertThat(locationPage.locationCard())
+//                .isTrue();
     }
     private void selectLocationAndSignUp(){
         enterPetDetailsPage = locationPage.clickLocationCard()
@@ -149,8 +155,9 @@ public class OnBoardingFlowTest extends BaseWebTest {
 
     private void enterSmsText(){
         didYouGetOurTextPage = new DidYouGetOurTextPage();
-        didYouGetOurTextPage.setSmsCode(smsText)
-                .clickContinueSMS();
+        didYouGetOurTextPage.setSmsCode(TwilioOTPHandle.smsMessage());
+        Selenide.sleep(4000);
+        didYouGetOurTextPage .clickContinueSMS();
     }
 
     private void billingInfo(){
