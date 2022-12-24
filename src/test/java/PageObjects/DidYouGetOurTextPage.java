@@ -1,6 +1,5 @@
 package PageObjects;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import comtest.BasePageObject;
 
@@ -13,7 +12,7 @@ public class DidYouGetOurTextPage extends BasePageObject {
     private final SelenideElement timeRemaining = $("div[class='time-remaining']");
 
     public DidYouGetOurTextPage() {
-        assertTrue(isOpened(), "Landing Page is opened");
+        assertTrue(isOpened(), "Did you get our Text Page is opened");
     }
 
     public boolean isOpened() {
