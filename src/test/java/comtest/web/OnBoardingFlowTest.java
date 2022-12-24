@@ -3,12 +3,22 @@ package comtest.web;
 import PageObjects.*;
 import Util.TwilioOTPHandle;
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.commands.TakeScreenshot;
+import com.codeborne.selenide.commands.TakeScreenshotAsImage;
+import com.codeborne.selenide.testng.ScreenShooter;
+import com.github.javafaker.DateAndTime;
 import com.twilio.Twilio;
 import comtest.BaseWebTest;
 import com.github.javafaker.Faker;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.openqa.selenium.TakesScreenshot;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 import static constants.CommonTexts.*;
 import static org.assertj.core.api.Assertions.allOf;
@@ -40,13 +50,14 @@ public class OnBoardingFlowTest extends BaseWebTest {
     public static final String AUTH_TOKEN = "ebff7b782d72fa019e0d62c5474bac9d";
 
     @BeforeMethod
-    public void setup(){
+    public void setup() throws IOException {
         landingPage = new LandingPage();
+        TakeScreenshot("First Page"+LocalDate.now());
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
     }
 
     @Test
-    public void verifyLandingPage(){
+    public void verifyLandingPage() throws IOException {
         callLandingPage();
         thirdPageView();
         getStartedPage();
@@ -61,8 +72,7 @@ public class OnBoardingFlowTest extends BaseWebTest {
         addPaymentInformation();
         getCareLandingPage();
     }
-
-    private void callLandingPage(){
+    private void callLandingPage() throws IOException {
         landingPage.clickNext();
 
         assertThat(landingPage.getCaruselText(VIRTUAL_ACCESS.getCommonTexts()))
@@ -72,9 +82,9 @@ public class OnBoardingFlowTest extends BaseWebTest {
         assertThat(landingPage.getTextFromSecondScreen())
                 .as("Text should match", SECOND_SCREEN_TEXT.getCommonTexts())
                 .isEqualTo(SECOND_SCREEN_TEXT.getCommonTexts());
+        TakeScreenshot("Second Page"+LocalDate.now());
     }
-
-    private void thirdPageView(){
+    private void thirdPageView() throws IOException {
         landingPage.clickThirdOption();
 
         assertThat(landingPage.getCaruselTextSecond(NO_EXAMS.getCommonTexts()))
@@ -84,9 +94,10 @@ public class OnBoardingFlowTest extends BaseWebTest {
         assertThat(landingPage.getTextFromLastScreen())
                 .as("Text Should Match", THIRD_SCREEN_TEXT.getCommonTexts())
                 .isEqualTo(THIRD_SCREEN_TEXT.getCommonTexts());
+        TakeScreenshot("Third Page"+LocalDate.now());
     }
 
-    private void getStartedPage(){
+    private void getStartedPage() throws IOException {
         locationPage = landingPage.getStartedSelect()
                 .clearZipField()
                 .setTextToZip("20002");
@@ -101,8 +112,9 @@ public class OnBoardingFlowTest extends BaseWebTest {
 //
 //        assertThat(locationPage.locationCard())
 //                .isTrue();
+        TakeScreenshot("GetStartedPage"+LocalDate.now());
     }
-    private void selectLocationAndSignUp(){
+    private void selectLocationAndSignUp() throws IOException {
         enterPetDetailsPage = locationPage.clickLocationCard()
                 .clickNotAnEmergency()
                 .setFirstNameField(firstName)
@@ -110,6 +122,7 @@ public class OnBoardingFlowTest extends BaseWebTest {
                 .setUserEmail(email)
                 .markCheckBox()
                 .clickContinue();
+        TakeScreenshot("PetDetails"+LocalDate.now());
     }
 
     private void isBreedEnabled(){
@@ -117,7 +130,7 @@ public class OnBoardingFlowTest extends BaseWebTest {
                 .as("It should be disabled")
                 .isFalse();
     }
-    private void fillPetInformation(){
+    private void fillPetInformation() throws IOException {
         enterPetDetailsPage.setPetName(petName)
                 .selectDog()
                 .selectMale()
@@ -127,46 +140,55 @@ public class OnBoardingFlowTest extends BaseWebTest {
                 .as("It should be disabled")
                 .isTrue();
         enterPetDetailsPage.enterBreed(petBreed)
-                .selectBreedOption()
-                .selectContinue();
+                .selectBreedOption();
+        TakeScreenshot("AppointmentPage"+LocalDate.now());
+        enterPetDetailsPage.selectContinue();
     }
 
-    private void selectAppointment(){
+    private void selectAppointment() throws IOException {
         chooseAppointmentPage = new ChooseAppointmentPage();
         chooseAppointmentPage.getAppointmentOptions();
         chooseAppointmentPage.setAppointment()
                 .continueAppointment()
                 .clickUnderstand();
+        TakeScreenshot("AcceptAppointment"+LocalDate.now());
     }
 
-    private void fillMoreInformation(){
+    private void fillMoreInformation() throws IOException {
         aLittleMoreAboutPage = new ALittleMoreAboutPage();
+        TakeScreenshot("ALittleMoreAboutYou"+LocalDate.now());
         aLittleMoreAboutPage.setPhoneNumber(phoneNumber)
                 .checkAppointmentCheckbox()
-                .checkDiscountCheckBox()
-                .selectContinue();
+                .checkDiscountCheckBox();
+        TakeScreenshot("ALittleMoreAboutYou"+LocalDate.now());
+        aLittleMoreAboutPage.selectContinue();
     }
-    private void generatePassword(){
+    private void generatePassword() throws IOException {
         createPasswordPage = new CreatePasswordPage();
+        TakeScreenshot("GeneratePassword"+LocalDate.now());
         createPasswordPage.setPassword(password)
-                .confirmPassword(password)
-                .nextPageContinue();
+                .confirmPassword(password);
+        TakeScreenshot("GeneratePassword"+LocalDate.now());
+        createPasswordPage.nextPageContinue();
     }
 
-    private void enterSmsText(){
+    private void enterSmsText() throws IOException {
         didYouGetOurTextPage = new DidYouGetOurTextPage();
         didYouGetOurTextPage.setSmsCode(TwilioOTPHandle.smsMessage());
         Selenide.sleep(4000);
+        TakeScreenshot("EnterSmSCode"+LocalDate.now());
         didYouGetOurTextPage .clickContinueSMS();
     }
 
-    private void billingInfo(){
+    private void billingInfo() throws IOException {
         yourMembershipPage = new YourMembershipPage();
+        TakeScreenshot("BillingInformation"+LocalDate.now());
         yourMembershipPage.continueToPayment();
     }
 
-    private void addPaymentInformation(){
+    private void addPaymentInformation() throws IOException {
         addPaymentPage = new AddPaymentPage();
+        TakeScreenshot("AddPayment"+LocalDate.now());
         addPaymentPage.setNameOnCard("Salomon")
                 .setCardNumber(cardNumber)
                 .setExpiration("1223")
@@ -175,12 +197,14 @@ public class OnBoardingFlowTest extends BaseWebTest {
                 .setCityText("San Diego")
                 .openStateDropdown()
                 .setState("California")
-                .setZipCode("91910")
-                .selectContinue();
+                .setZipCode("91910");
+        TakeScreenshot("PaymentInformationAdded"+LocalDate.now());
+        addPaymentPage.selectContinue();
     }
 
-    private void getCareLandingPage(){
+    private void getCareLandingPage() throws IOException {
         getCareLandingPage = new GetCareLandingPage();
+        TakeScreenshot("GetCarePage"+LocalDate.now());
     }
 
 }
