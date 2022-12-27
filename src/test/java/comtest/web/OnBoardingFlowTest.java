@@ -109,9 +109,9 @@ public class OnBoardingFlowTest extends BaseWebTest {
         assertThat(locationPage.subZipText())
                 .as("Text Should Match", ZIP_TEXT.getCommonTexts())
                 .isEqualTo(ZIP_TEXT.getCommonTexts());
-//
-//        assertThat(locationPage.locationCard())
-//                .isTrue();
+
+        assertThat(locationPage.locationCard())
+                .isTrue();
         TakeScreenshot("GetStartedPage"+LocalDate.now());
     }
     private void selectLocationAndSignUp() throws IOException {
@@ -141,12 +141,13 @@ public class OnBoardingFlowTest extends BaseWebTest {
                 .isTrue();
         enterPetDetailsPage.enterBreed(petBreed)
                 .selectBreedOption();
-        TakeScreenshot("AppointmentPage"+LocalDate.now());
+        TakeScreenshot("PetInformationFilled"+LocalDate.now());
         enterPetDetailsPage.selectContinue();
     }
 
     private void selectAppointment() throws IOException {
         chooseAppointmentPage = new ChooseAppointmentPage();
+        TakeScreenshot("AcceptAppointmentEmpty"+LocalDate.now());
         chooseAppointmentPage.getAppointmentOptions();
         chooseAppointmentPage.setAppointment()
                 .continueAppointment()
