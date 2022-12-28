@@ -41,18 +41,17 @@ public class OnBoardingFlowTest extends BaseWebTest {
     private String petName = faker.name().firstName();
     private String firstName = faker.name().firstName();
     private String lastName = faker.name().lastName();
-    private String phoneNumber = "2059734909";
+    private String phoneNumber = "3396752234";
     private String smsText = faker.number().digits(4);
     private String password = "1234asdF@";
     private String petBreed = "Collie";
     private String cardNumber = "4242424242424242";
-    public static final String ACCOUNT_SID = "AC77079aa7c97a5bb8e3a7a34d0593ce1d";
-    public static final String AUTH_TOKEN = "ebff7b782d72fa019e0d62c5474bac9d";
+    public static final String ACCOUNT_SID = "ACf1b12f0aa5be0f10511cb307abb1acd2";
+    public static final String AUTH_TOKEN = "dfba90f015d9d088f4ca278da0a513c1";
 
     @BeforeMethod
-    public void setup() throws IOException {
+    public void setup(){
         landingPage = new LandingPage();
-        TakeScreenshot("First Page"+LocalDate.now());
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
     }
 

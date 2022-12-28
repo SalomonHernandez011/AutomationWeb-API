@@ -17,7 +17,7 @@ public class TwilioOTPHandle {
 
     public static String getMessage() {
         return getMessages().filter(m -> m.getDirection().compareTo(Message.Direction.INBOUND) == 0)
-                .filter(m -> m.getTo().equals("+12059734909")).map(Message::getBody).findFirst()
+                .filter(m -> m.getTo().equals("+13396752234")).map(Message::getBody).findFirst()
                 .orElseThrow(IllegalStateException::new);
     }
 
