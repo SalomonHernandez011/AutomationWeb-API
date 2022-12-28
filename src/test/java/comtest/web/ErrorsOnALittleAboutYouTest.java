@@ -31,7 +31,6 @@ public class ErrorsOnALittleAboutYouTest extends BaseWebTest {
     @Test
     public void verifyLandingPage(){
         invalidEmail();
-
     }
     private void invalidEmail() {
         aLittleAboutYouPage.setUserEmail("invalid email");

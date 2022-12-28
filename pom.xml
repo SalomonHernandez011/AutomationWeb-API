@@ -179,9 +179,9 @@
     </activation>
     <properties>
     <url>https://qa.parkerandace.com/</url>
+        <usr.email>salomontesting+qa012@gmail.com</usr.email>
     </properties>
     </profile>
-
         <profile>
             <id>panda-uat</id>
             <activation>
