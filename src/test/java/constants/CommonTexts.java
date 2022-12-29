@@ -11,7 +11,10 @@ public enum CommonTexts {
     VIRTUAL_ACCESS("24/7 Virtual Access"),
     NO_EXAMS("No Exam Fees"),
     LOCATION_INSTRUCTIONS("To find the location nearest to you, please enter your zip code or enable location services on your device."),
-    ZIP_TEXT("Enter Zip to display available locations");
+    ZIP_TEXT("Enter Zip to display available locations"),
+    PASSWORD_REQUIRED("password is required"),
+    INVALID_EMAIL("Invalid email address");
+
 
     @Getter
     private final String CommonTexts;

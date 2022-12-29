@@ -50,8 +50,9 @@ public class OnBoardingFlowTest extends BaseWebTest {
     public static final String AUTH_TOKEN = "dfba90f015d9d088f4ca278da0a513c1";
 
     @BeforeMethod
-    public void setup(){
+    public void setup() throws IOException {
         landingPage = new LandingPage();
+        TakeScreenshot("First Page"+LocalDate.now());
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
     }
 
@@ -175,7 +176,7 @@ public class OnBoardingFlowTest extends BaseWebTest {
     private void enterSmsText() throws IOException {
         didYouGetOurTextPage = new DidYouGetOurTextPage();
         didYouGetOurTextPage.setSmsCode(TwilioOTPHandle.smsMessage());
-        Selenide.sleep(4000);
+        Selenide.sleep(3000);
         TakeScreenshot("EnterSmSCode"+LocalDate.now());
         didYouGetOurTextPage .clickContinueSMS();
     }

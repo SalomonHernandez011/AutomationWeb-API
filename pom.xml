@@ -167,6 +167,7 @@
             </activation>
             <properties>
                 <url>https://dev.parkerandace.com/</url>
+                <login.url>https://dev.parkerandace.com/login</login.url>
             </properties>
         </profile>
 
@@ -179,6 +180,7 @@
     </activation>
     <properties>
     <url>https://qa.parkerandace.com/</url>
+        <login.url>https://qa.parkerandace.com/login</login.url>
         <usr.email>salomontesting+qa012@gmail.com</usr.email>
     </properties>
     </profile>
@@ -189,6 +191,7 @@
             </activation>
             <properties>
                 <url>https://uat.parkerandace.com/</url>
+                <login.url>https://uat.parkerandace.com/login</login.url>
             </properties>
         </profile>
 
@@ -199,6 +202,7 @@
             </activation>
             <properties>
                 <url>https://app.parkerandace.com/</url>
+                <login.url>https://qa.parkerandace.com/login</login.url>
             </properties>
         </profile>
     </profiles>

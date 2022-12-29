@@ -9,7 +9,12 @@ import dataProvider.ConfigFileReader;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static constants.CommonProperties.USER_EMAIL;
+import java.io.IOException;
+import java.time.LocalDate;
+
+import static constants.CommonProperties.*;
+import static constants.CommonTexts.INVALID_EMAIL;
+import static constants.CommonTexts.PASSWORD_REQUIRED;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class GetCareTest extends BaseWebTest {
@@ -20,38 +25,40 @@ public class GetCareTest extends BaseWebTest {
     private String invalidPassword = "Abc@123!";
     @BeforeMethod
     public void setup(){
-        Selenide.open("https://qa.parkerandace.com/login");
+        Selenide.open(ConfigFileReader.getProperty(LOGIN_URL));
         logInPage = new LogInPage();
     }
 
     @Test
-    public void verifyLogInPage(){
+    public void verifyLogInPage() throws IOException {
         enterWrongEmail();
         passwordRequiredError();
         setCorrectCredentials();
         clickLogIn();
     }
 
-    private void enterWrongEmail(){
+    private void enterWrongEmail() throws IOException {
         logInPage.setLoginEmail(invalidEmail);
         assertThat(logInPage.invalidEmailErrorMessage())
-                .as("Error message is displayed")
+                .as("Error message is displayed", INVALID_EMAIL)
                 .isTrue();
         assertThat(logInPage.logInButtonEnabled())
                 .as("Button is disabled")
                 .isFalse();
+        TakeScreenshot("WrongEmail"+ LocalDate.now());
     }
 
-    private void passwordRequiredError(){
+    private void passwordRequiredError() throws IOException {
         logInPage.setPassword("a");
         assertThat(logInPage.passwordErrorMessage())
-                .as("Error message is displayed")
+                .as("Error message is displayed", PASSWORD_REQUIRED)
                 .isTrue();
         assertThat(logInPage.logInButtonEnabled())
                 .as("Button is disabled")
                 .isFalse();
+        TakeScreenshot("PasswordIsRequired"+LocalDate.now());
     }
-    private void setCorrectCredentials(){
+    private void setCorrectCredentials() throws IOException {
         logInPage.clearEmailField();
         logInPage.clearPasswordField();
         logInPage.setLoginEmail(ConfigFileReader.getProperty(USER_EMAIL))
@@ -59,10 +66,12 @@ public class GetCareTest extends BaseWebTest {
         assertThat(logInPage.logInButtonEnabled())
                 .as("Button is enabled")
                 .isTrue();
+        TakeScreenshot("ButtonIsEnabled"+LocalDate.now());
     }
-    private void clickLogIn(){
+    private void clickLogIn() throws IOException {
         logInPage.clickLogIn();
         Selenide.sleep(3000);
         getCareLandingPage = new GetCareLandingPage();
+        TakeScreenshot("GetCarePageIsDisplayed"+LocalDate.now());
     }
 }
