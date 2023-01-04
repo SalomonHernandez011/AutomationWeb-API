@@ -42,7 +42,6 @@ public class ResetPassword extends BaseWebTest {
         Selenide.sleep(4000);
         logInPage.setResetCode(GmailHandler.getResetCode());
         TakeScreenshot("ResetPasswordCode"+ LocalDate.now());
-        GmailHandler.deleteEmail();
     }
 
 }
