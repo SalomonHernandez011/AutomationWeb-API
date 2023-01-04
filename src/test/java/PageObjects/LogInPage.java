@@ -15,6 +15,10 @@ public class LogInPage extends BasePageObject {
     private final SelenideElement userPassword = $("input[name='PASSWORD']");
     private final SelenideElement passwordErrorMessage = $x("//*[contains(text(),'password is required')]");
     private final SelenideElement emailErrorMessage = $x("//*[contains(text(),'Invalid email address')]");
+    private final SelenideElement forgotPasswordLink = $x("//a[@href='/fogot-password']");
+    private final SelenideElement forgotPasswordEmail = $("input[name='email']");
+    private final SelenideElement resetButton = $("button[class*='btn-primary']");
+    private final SelenideElement resetCode = $("input[name='code']");
 
     public LogInPage() {
         assertTrue(isOpened(), "LogIn Page is opened");
@@ -59,4 +63,20 @@ public class LogInPage extends BasePageObject {
         sendSelectAllKeys(userPassword);
         userPassword.sendKeys(Keys.DELETE);
     }
+    public void selectResetPassword(){
+        forgotPasswordLink.click();
+    }
+
+    public void setForgotEmail(String email){
+        forgotPasswordEmail.setValue(email);
+    }
+
+    public void clickResetButton(){
+        resetButton.click();
+    }
+
+    public void setResetCode(String code){
+        resetCode.setValue(code);
+    }
+
 }

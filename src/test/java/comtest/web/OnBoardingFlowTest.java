@@ -37,7 +37,7 @@ public class OnBoardingFlowTest extends BaseWebTest {
     private YourMembershipPage yourMembershipPage;
     private AddPaymentPage addPaymentPage;
     private GetCareLandingPage getCareLandingPage;
-    private String email = "salomontesting"+"+"+RandomStringUtils.randomNumeric(9)+"@gmail.com";
+    private String email = "parkertestingace"+"+"+RandomStringUtils.randomNumeric(9)+"@gmail.com";
     private String petName = faker.name().firstName();
     private String firstName = faker.name().firstName();
     private String lastName = faker.name().lastName();
