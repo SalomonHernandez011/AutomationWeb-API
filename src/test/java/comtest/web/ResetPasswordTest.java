@@ -13,7 +13,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
-import java.security.GeneralSecurityException;
 import java.time.LocalDate;
 
 import static constants.CommonProperties.LOGIN_URL;
@@ -34,7 +33,7 @@ public class ResetPasswordTest extends BaseWebTest {
     }
 
     @Test
-    public void verifyLogInPage() throws IOException, GeneralSecurityException {
+    public void verifyLogInPage() throws IOException {
         selectForgotPassword();
     }
 

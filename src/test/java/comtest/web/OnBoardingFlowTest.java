@@ -36,7 +36,7 @@ public class OnBoardingFlowTest extends BaseWebTest {
     private DidYouGetOurTextPage didYouGetOurTextPage;
     private YourMembershipPage yourMembershipPage;
     private AddPaymentPage addPaymentPage;
-    private GetCareLandingPage getCareLandingPage;
+    private LogInPage logInPage;
     private String email = "parkertestingace"+"+"+RandomStringUtils.randomNumeric(9)+"@gmail.com";
     private String petName = faker.name().firstName();
     private String firstName = faker.name().firstName();
@@ -204,8 +204,8 @@ public class OnBoardingFlowTest extends BaseWebTest {
     }
 
     private void getCareLandingPage() throws IOException {
-        getCareLandingPage = new GetCareLandingPage();
-        TakeScreenshot("GetCarePage"+LocalDate.now());
+        logInPage = new LogInPage();
+        TakeScreenshot("LogInPage"+LocalDate.now());
     }
 
 }
