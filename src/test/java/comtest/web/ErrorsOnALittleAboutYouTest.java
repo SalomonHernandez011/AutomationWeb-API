@@ -29,7 +29,7 @@ public class ErrorsOnALittleAboutYouTest extends BaseWebTest {
     }
 
     @Test
-    public void verifyLandingPage(){
+    public void verifyErrorsOnALittleAboutYouPage(){
         invalidEmail();
     }
     private void invalidEmail() {

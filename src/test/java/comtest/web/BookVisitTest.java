@@ -31,7 +31,7 @@ public class BookVisitTest extends BaseWebTest {
     }
 
     @Test
-    public void verifyLogInPage() throws IOException {
+    public void verifyBookVisitPage() throws IOException {
         navigateToBookVisit();
     }
 

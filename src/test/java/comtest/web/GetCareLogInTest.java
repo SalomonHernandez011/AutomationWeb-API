@@ -30,7 +30,7 @@ public class GetCareLogInTest extends BaseWebTest {
     }
 
     @Test
-    public void verifyLogInPage() throws IOException {
+    public void verifyGetCareLogInPage() throws IOException {
         enterWrongEmail();
         passwordRequiredError();
         setCorrectCredentials();

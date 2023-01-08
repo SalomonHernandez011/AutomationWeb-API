@@ -33,7 +33,7 @@ public class ResetPasswordTest extends BaseWebTest {
     }
 
     @Test
-    public void verifyLogInPage() throws IOException {
+    public void verifyForgotPasswordPage() throws IOException {
         selectForgotPassword();
     }
 

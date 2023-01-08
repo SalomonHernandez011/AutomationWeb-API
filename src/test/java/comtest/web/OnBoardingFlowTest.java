@@ -51,7 +51,7 @@ public class OnBoardingFlowTest extends BaseWebTest {
     }
 
     @Test
-    public void verifyLandingPage() throws IOException {
+    public void verifyOnBoardingFlowPage() throws IOException {
         callLandingPage();
         thirdPageView();
         getStartedPage();
