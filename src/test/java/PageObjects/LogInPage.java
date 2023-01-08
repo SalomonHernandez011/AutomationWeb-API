@@ -37,8 +37,9 @@ public class LogInPage extends BasePageObject {
         return this;
     }
 
-    public void clickLogIn(){
+    public GetCareLandingPage clickLogIn(){
         logInButton.click();
+        return new GetCareLandingPage();
     }
 
     public boolean passwordErrorMessage(){

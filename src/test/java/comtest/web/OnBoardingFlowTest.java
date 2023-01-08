@@ -3,25 +3,19 @@ package comtest.web;
 import PageObjects.*;
 import Util.TwilioOTPHandle;
 import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.commands.TakeScreenshot;
-import com.codeborne.selenide.commands.TakeScreenshotAsImage;
-import com.codeborne.selenide.testng.ScreenShooter;
-import com.github.javafaker.DateAndTime;
 import com.twilio.Twilio;
 import comtest.BaseWebTest;
 import com.github.javafaker.Faker;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.openqa.selenium.TakesScreenshot;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Date;
+
 
 import static constants.CommonTexts.*;
-import static org.assertj.core.api.Assertions.allOf;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class OnBoardingFlowTest extends BaseWebTest {
@@ -36,7 +30,7 @@ public class OnBoardingFlowTest extends BaseWebTest {
     private DidYouGetOurTextPage didYouGetOurTextPage;
     private YourMembershipPage yourMembershipPage;
     private AddPaymentPage addPaymentPage;
-    private LogInPage logInPage;
+    private GetCareLandingPage getCareLandingPage;
     private String email = "parkertestingace"+"+"+RandomStringUtils.randomNumeric(9)+"@gmail.com";
     private String petName = faker.name().firstName();
     private String firstName = faker.name().firstName();
@@ -204,8 +198,8 @@ public class OnBoardingFlowTest extends BaseWebTest {
     }
 
     private void getCareLandingPage() throws IOException {
-        logInPage = new LogInPage();
-        TakeScreenshot("LogInPage"+LocalDate.now());
+        getCareLandingPage = new GetCareLandingPage();
+        TakeScreenshot("GetCare should be displayed"+LocalDate.now());
     }
 
 }

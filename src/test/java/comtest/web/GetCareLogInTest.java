@@ -17,7 +17,7 @@ import static constants.CommonTexts.INVALID_EMAIL;
 import static constants.CommonTexts.PASSWORD_REQUIRED;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class GetCareTest extends BaseWebTest {
+public class GetCareLogInTest extends BaseWebTest {
     private LogInPage logInPage;
     private GetCareLandingPage getCareLandingPage;
     Faker faker = new Faker();
