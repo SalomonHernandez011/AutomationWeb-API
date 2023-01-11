@@ -10,9 +10,9 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
-import java.time.LocalDate;
 
-import static constants.CommonProperties.*;
+import static constants.CommonProperties.LOGIN_URL;
+import static constants.CommonProperties.USER_EMAIL;
 import static constants.CommonTexts.INVALID_EMAIL;
 import static constants.CommonTexts.PASSWORD_REQUIRED;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -45,7 +45,7 @@ public class GetCareLogInTest extends BaseWebTest {
         assertThat(logInPage.logInButtonEnabled())
                 .as("Button is disabled")
                 .isFalse();
-        TakeScreenshot("WrongEmail"+ LocalDate.now());
+        TakeScreenshot("LogIn");
     }
 
     private void passwordRequiredError() throws IOException {
@@ -56,7 +56,7 @@ public class GetCareLogInTest extends BaseWebTest {
         assertThat(logInPage.logInButtonEnabled())
                 .as("Button is disabled")
                 .isFalse();
-        TakeScreenshot("PasswordIsRequired"+LocalDate.now());
+        TakeScreenshot("LogIn");
     }
     private void setCorrectCredentials() throws IOException {
         logInPage.clearEmailField();
@@ -66,12 +66,12 @@ public class GetCareLogInTest extends BaseWebTest {
         assertThat(logInPage.logInButtonEnabled())
                 .as("Button is enabled")
                 .isTrue();
-        TakeScreenshot("ButtonIsEnabled"+LocalDate.now());
+        TakeScreenshot("LogIn");
     }
     private void clickLogIn() throws IOException {
         logInPage.clickLogIn();
         Selenide.sleep(3000);
         getCareLandingPage = new GetCareLandingPage();
-        TakeScreenshot("GetCarePageIsDisplayed"+LocalDate.now());
+        TakeScreenshot("LogIn");
     }
 }
