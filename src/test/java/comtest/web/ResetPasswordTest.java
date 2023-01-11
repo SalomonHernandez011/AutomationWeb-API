@@ -13,7 +13,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
-import java.time.LocalDate;
 
 import static constants.CommonProperties.LOGIN_URL;
 import static constants.CommonProperties.USER_EMAIL;
@@ -33,20 +32,19 @@ public class ResetPasswordTest extends BaseWebTest {
     }
 
     @Test
-    public void verifyForgotPasswordPage() throws IOException {
+    public void verifyForgotPasswordPage() throws IOException{
         selectForgotPassword();
     }
 
-    private void selectForgotPassword() throws IOException {
+    private void selectForgotPassword() throws IOException{
         logInPage.selectResetPassword();
         forgotYourPasswordPage = new ForgotYourPasswordPage();
         forgotYourPasswordPage.setForgotEmail(ConfigFileReader.getProperty(USER_EMAIL));
         forgotYourPasswordPage.clickResetButton();
-        Selenide.sleep(6000);
         enterResetCodePage = new EnterResetCodePage();
+        Selenide.sleep(7000);
         enterResetCodePage.setResetCode(GmailHandler.getResetCode());
-        TakeScreenshot("ResetPasswordCode"+ LocalDate.now());
-        Selenide.sleep(2000);
+        TakeScreenshot("LogIn");
     }
 
 }

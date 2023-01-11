@@ -37,5 +37,6 @@ public class ErrorsOnALittleAboutYouTest extends BaseWebTest {
         assertThat(aLittleAboutYouPage.errorEmailMsg())
                 .as("Error Text Should Match", errorEmailText)
                 .containsIgnoringCase(errorEmailText);
+        TakeScreenshot("LogIn");
     }
 }

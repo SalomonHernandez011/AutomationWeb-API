@@ -1,18 +1,5 @@
 package Util;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.security.GeneralSecurityException;
-import java.util.ArrayList;
-import java.util.Base64;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
 import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
@@ -26,14 +13,15 @@ import com.google.api.client.util.store.FileDataStoreFactory;
 import com.google.api.services.gmail.Gmail;
 import com.google.api.services.gmail.GmailScopes;
 import com.google.api.services.gmail.model.ListMessagesResponse;
-import com.google.api.services.gmail.model.ListThreadsResponse;
 import com.google.api.services.gmail.model.Message;
 import com.google.api.services.gmail.model.Thread;
-
 import io.restassured.path.json.JsonPath;
 import org.apache.commons.lang3.StringUtils;
 
-import static javax.mail.Flags.Flag.USER;
+import java.io.*;
+import java.security.GeneralSecurityException;
+import java.util.*;
+
 
 public class GmailHandler {
     private static final String APPLICATION_NAME = "ParkerAndAce";
@@ -202,12 +190,12 @@ public class GmailHandler {
         }
     }
 
-    public static String getResetCode(){
+
+    public static String getResetCode() {
         HashMap<String, String> hm = getGmailData("subject:Forgot password request");
         String reset = hm.get("body");
         String reset2 = reset.replaceAll("\\D+","");
         String firstSixNumbers = StringUtils.left(reset2, 6);
         return firstSixNumbers;
     }
-
 }

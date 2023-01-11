@@ -1,17 +1,14 @@
 package comtest.web;
 
-import PageObjects.GetCareLandingPage;
 import PageObjects.LogInPage;
 import PageObjects.NavigationMenu;
 import com.codeborne.selenide.Selenide;
 import comtest.BaseWebTest;
 import dataProvider.ConfigFileReader;
-import org.openqa.selenium.TakesScreenshot;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
-import java.time.LocalDate;
 
 import static constants.CommonProperties.LOGIN_URL;
 import static constants.CommonProperties.USER_EMAIL;
@@ -37,6 +34,6 @@ public class ReviewAppointmentPageTest extends BaseWebTest {
     private void navigateToAppointments() throws IOException {
         navigationMenu = new NavigationMenu();
         navigationMenu.clickAppointment();
-        TakeScreenshot("AppointmentPage"+ LocalDate.now());
+        TakeScreenshot("Appointments");
     }
 }

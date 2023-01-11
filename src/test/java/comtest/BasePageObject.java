@@ -1,8 +1,6 @@
 package comtest;
 
-import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
@@ -13,8 +11,8 @@ import java.util.Objects;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static java.lang.String.format;
-import static org.openqa.selenium.Keys.*;
 import static java.util.stream.LongStream.range;
+import static org.openqa.selenium.Keys.*;
 
 public abstract class BasePageObject {
 

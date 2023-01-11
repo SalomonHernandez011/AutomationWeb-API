@@ -1,6 +1,9 @@
 package comtest.web;
 
-import PageObjects.*;
+import PageObjects.BookVisitPage;
+import PageObjects.GetCareLandingPage;
+import PageObjects.LogInPage;
+import PageObjects.WellnessPage;
 import com.codeborne.selenide.Selenide;
 import comtest.BaseWebTest;
 import dataProvider.ConfigFileReader;
@@ -8,11 +11,9 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
-import java.time.LocalDate;
 
 import static constants.CommonProperties.LOGIN_URL;
 import static constants.CommonProperties.USER_EMAIL;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class WellnessOptionsTest extends BaseWebTest {
@@ -70,6 +71,6 @@ public class WellnessOptionsTest extends BaseWebTest {
         assertThat(wellnessPage.otherOnSiteText())
                 .as("text should match", "Other Onsite services")
                 .isEqualTo("Other Onsite services");
-        TakeScreenshot("WellnessPage"+ LocalDate.now());
+        TakeScreenshot("GetCare");
     }
 }
