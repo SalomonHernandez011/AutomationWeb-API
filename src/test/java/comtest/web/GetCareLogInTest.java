@@ -30,14 +30,14 @@ public class GetCareLogInTest extends BaseWebTest {
     }
 
     @Test
-    public void verifyGetCareLogInPage() throws IOException {
+    public void verifyGetCareLogInPage() {
         enterWrongEmail();
         passwordRequiredError();
         setCorrectCredentials();
         clickLogIn();
     }
 
-    private void enterWrongEmail() throws IOException {
+    private void enterWrongEmail() {
         logInPage.setLoginEmail(invalidEmail);
         assertThat(logInPage.invalidEmailErrorMessage())
                 .as("Error message is displayed", INVALID_EMAIL)
@@ -48,7 +48,7 @@ public class GetCareLogInTest extends BaseWebTest {
         TakeScreenshot("LogIn");
     }
 
-    private void passwordRequiredError() throws IOException {
+    private void passwordRequiredError() {
         logInPage.setPassword("a");
         assertThat(logInPage.passwordErrorMessage())
                 .as("Error message is displayed", PASSWORD_REQUIRED)
@@ -58,7 +58,7 @@ public class GetCareLogInTest extends BaseWebTest {
                 .isFalse();
         TakeScreenshot("LogIn");
     }
-    private void setCorrectCredentials() throws IOException {
+    private void setCorrectCredentials() {
         logInPage.clearEmailField();
         logInPage.clearPasswordField();
         logInPage.setLoginEmail(ConfigFileReader.getProperty(USER_EMAIL))
@@ -68,9 +68,10 @@ public class GetCareLogInTest extends BaseWebTest {
                 .isTrue();
         TakeScreenshot("LogIn");
     }
-    private void clickLogIn() throws IOException {
+    private void clickLogIn() {
         logInPage.clickLogIn();
         Selenide.sleep(3000);
+        TakeScreenshot("LogIn");
         getCareLandingPage = new GetCareLandingPage();
         TakeScreenshot("LogIn");
     }

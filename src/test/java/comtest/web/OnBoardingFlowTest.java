@@ -26,6 +26,7 @@ public class OnBoardingFlowTest extends BaseWebTest {
     private YourMembershipPage yourMembershipPage;
     private AddPaymentPage addPaymentPage;
     private GetCareLandingPage getCareLandingPage;
+    private AppointmentHeldPopUp appointmentHeldPopUp;
     private String email = "parkertestingace"+"+"+RandomStringUtils.randomNumeric(9)+"@gmail.com";
     private String petName = faker.pokemon().name();
     private String firstName = faker.name().firstName();
@@ -104,17 +105,22 @@ public class OnBoardingFlowTest extends BaseWebTest {
         TakeScreenshot("OnBoarding");
     }
     private void selectLocationAndSignUp() {
-        enterPetDetailsPage = locationPage.clickLocationCard()
-                .clickNotAnEmergency()
-                .setFirstNameField(firstName)
+        locationPage = new LocationPage();
+         locationPage.clickLocationCard()
+                .clickNotAnEmergency();
+    aLittleAboutYouPage = new ALittleAboutYouPage();
+        TakeScreenshot("OnBoarding");
+        aLittleAboutYouPage.setFirstNameField(firstName)
                 .setLastNameField(lastName)
                 .setUserEmail(email)
-                .markCheckBox()
-                .clickContinue();
+                .markCheckBox();
+        TakeScreenshot("OnBoarding");
+        aLittleAboutYouPage.clickContinue();
         TakeScreenshot("OnBoarding");
     }
 
     private void isBreedEnabled() {
+        enterPetDetailsPage = new EnterPetDetailsPage();
         assertThat(enterPetDetailsPage.breedEnabled())
                 .as("It should be disabled")
                 .isFalse();
@@ -139,8 +145,10 @@ public class OnBoardingFlowTest extends BaseWebTest {
         TakeScreenshot("OnBoarding");
         chooseAppointmentPage.getAppointmentOptions();
         chooseAppointmentPage.setAppointment()
-                .continueAppointment()
-                .clickUnderstand();
+                .continueAppointment();
+        TakeScreenshot("OnBoarding");
+        appointmentHeldPopUp = new AppointmentHeldPopUp();
+        appointmentHeldPopUp.clickUnderstand();
         TakeScreenshot("OnBoarding");
     }
 
@@ -164,6 +172,7 @@ public class OnBoardingFlowTest extends BaseWebTest {
 
     private void enterSmsText() {
         didYouGetOurTextPage = new DidYouGetOurTextPage();
+        TakeScreenshot("OnBoarding");
         didYouGetOurTextPage.setSmsCode(TwilioOTPHandle.smsMessage());
         Selenide.sleep(3000);
         TakeScreenshot("OnBoarding");

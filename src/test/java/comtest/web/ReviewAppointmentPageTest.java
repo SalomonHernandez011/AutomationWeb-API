@@ -27,11 +27,11 @@ public class ReviewAppointmentPageTest extends BaseWebTest {
     }
 
     @Test
-    public void verifyAppointmentPage() throws IOException {
+    public void verifyAppointmentPage() {
         navigateToAppointments();
     }
 
-    private void navigateToAppointments() throws IOException {
+    private void navigateToAppointments() {
         navigationMenu = new NavigationMenu();
         navigationMenu.clickAppointment();
         TakeScreenshot("Appointments");

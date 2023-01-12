@@ -32,19 +32,20 @@ public class ResetPasswordTest extends BaseWebTest {
     }
 
     @Test
-    public void verifyForgotPasswordPage() throws IOException{
+    public void verifyForgotPasswordPage() {
         selectForgotPassword();
     }
 
-    private void selectForgotPassword() throws IOException{
+    private void selectForgotPassword() {
         logInPage.selectResetPassword();
         forgotYourPasswordPage = new ForgotYourPasswordPage();
         forgotYourPasswordPage.setForgotEmail(ConfigFileReader.getProperty(USER_EMAIL));
         forgotYourPasswordPage.clickResetButton();
+        TakeScreenshot("LogIn_Reset-password");
         enterResetCodePage = new EnterResetCodePage();
         Selenide.sleep(7000);
         enterResetCodePage.setResetCode(GmailHandler.getResetCode());
-        TakeScreenshot("LogIn");
+        TakeScreenshot("LogIn_Reset-password");
     }
 
 }

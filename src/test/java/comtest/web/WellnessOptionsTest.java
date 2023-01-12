@@ -34,12 +34,13 @@ public class WellnessOptionsTest extends BaseWebTest {
     }
 
     @Test
-    public void verifyWellnessPage() throws IOException {
+    public void verifyWellnessPage()  {
         navigateToWellness();
     }
 
-    private void navigateToWellness() throws IOException {
+    private void navigateToWellness() {
         wellnessPage = new WellnessPage();
+        TakeScreenshot("GetCare_Wellness");
         assertThat(wellnessPage.annualWellnessText())
                 .as("text should match", "Annual wellness visit")
                 .isEqualTo("Annual wellness visit");
@@ -71,6 +72,6 @@ public class WellnessOptionsTest extends BaseWebTest {
         assertThat(wellnessPage.otherOnSiteText())
                 .as("text should match", "Other Onsite services")
                 .isEqualTo("Other Onsite services");
-        TakeScreenshot("GetCare");
+        TakeScreenshot("GetCare_Wellness");
     }
 }
