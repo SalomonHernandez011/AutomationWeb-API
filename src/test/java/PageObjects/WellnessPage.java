@@ -10,6 +10,8 @@ import static org.testng.Assert.assertTrue;
 public class WellnessPage extends BasePageObject {
 
     private final SelenideElement wellnessTitle = $x("//div[@class='welcome-text text-3xl w400' and text()='Wellness']");
+    private final SelenideElement wellnessSubTitle = $("div[class='welcome-text text-sm w400']");
+    private final SelenideElement wellnessQuestion = $("div[class$='text-base']");
     private final SelenideElement wellnessOptionList = $("div[class='options-list']");
     private final SelenideElement annualWellnessVisitOption = $x("//div[@class='text-base w400 title false' and text()='Annual wellness visit']");
     private final SelenideElement travelAnxietyOption = $x("//div[@class='text-base w400 title false' and text()='Travel anxiety']");
@@ -19,6 +21,8 @@ public class WellnessPage extends BasePageObject {
     private final SelenideElement behaviourIssuesOption = $x("//div[@class='text-base w400 title false' and text()='Behavioral issues']");
     private final SelenideElement separationAnxietyOption = $x("//div[@class='text-base w400 title false' and text()='Separation anxiety']");
     private final SelenideElement otherOnsiteOption = $x("//div[@class='text-base w400 title false' and text()='Other Onsite services']");
+    private final SelenideElement wellnessSubTextOne = $x("//div[contains(text(),'Schedule your pet’s annual wellness visit')]");
+    private final SelenideElement wellnessSubTextTwo = $x("//div[contains(text(),'Schedule your pet’s annual wellness visit')]");
 
 
 
@@ -30,6 +34,17 @@ public class WellnessPage extends BasePageObject {
         return isPageObjectLoaded(wellnessTitle, wellnessOptionList);
     }
 
+    public String wellnessTitleText(){
+        return wellnessTitle.getText();
+    }
+
+    public String wellnessSubTitleText(){
+        return wellnessSubTitle.getText();
+    }
+
+    public String wellnessQuestionText(){
+        return wellnessQuestion.getText();
+    }
     public String annualWellnessText(){
         return annualWellnessVisitOption.getText();
     }
@@ -54,6 +69,11 @@ public class WellnessPage extends BasePageObject {
     public String otherOnSiteText(){
         return otherOnsiteOption.getText();
     }
+    public void clickAnnualWellNessVisit(){
+        annualWellnessVisitOption.click();
+    }
+
+
 
 
 }

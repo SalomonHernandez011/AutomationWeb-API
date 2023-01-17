@@ -33,8 +33,14 @@ public class BookVisitTest extends BaseWebTest {
 
     private void navigateToBookVisit(){
         getCareLandingPage = new GetCareLandingPage();
+        TakeScreenshot("BookVisit");
         getCareLandingPage.clickBookVisit();
+        TakeScreenshot("BookVisit");
         bookVisitPage = new BookVisitPage();
-        bookVisitPage.clickWellnessOption();
+        bookVisitPage.clickTravel();
+        TakeScreenshot("BookVisit");
+        bookVisitPage.clickBookVisit();
+        bookVisitPage.clickDental();
+        TakeScreenshot("BookVisit");
     }
 }

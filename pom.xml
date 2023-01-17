@@ -219,8 +219,9 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <url>https://dev.parkerandace.com/</url>
+                <url>https://dev.parkerandace.com/on-boarding</url>
                 <login.url>https://dev.parkerandace.com/login</login.url>
+                <usr.email>parkertestingace+dev001@gmail.com</usr.email>
             </properties>
         </profile>
 
@@ -232,7 +233,7 @@
         <activeByDefault>true</activeByDefault>
     </activation>
     <properties>
-    <url>https://qa.parkerandace.com/</url>
+    <url>https://qa.parkerandace.com/on-boarding</url>
         <login.url>https://qa.parkerandace.com/login</login.url>
         <usr.email>parkertestingace+406172347@gmail.com</usr.email>
     </properties>
@@ -243,7 +244,7 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <url>https://uat.parkerandace.com/</url>
+                <url>https://uat.parkerandace.com/on-boarding</url>
                 <login.url>https://uat.parkerandace.com/login</login.url>
                 <usr.email>parkertestingace+312867547@gmail.com</usr.email>
             </properties>
@@ -255,7 +256,7 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <url>https://app.parkerandace.com/</url>
+                <url>https://app.parkerandace.com/on-boarding</url>
                 <login.url>https://qa.parkerandace.com/login</login.url>
             </properties>
         </profile>

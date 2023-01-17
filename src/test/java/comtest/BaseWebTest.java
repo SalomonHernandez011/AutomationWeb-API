@@ -45,13 +45,8 @@ public class BaseWebTest {
 
     }
     public static void TakeScreenshot(String folderName){
-//        TakesScreenshot Sc = (TakesScreenshot)WebDriverRunner.getWebDriver();
-//        File SourceImg = Sc.getScreenshotAs(OutputType.FILE);
-//            FileUtils.copyFile(SourceImg, new File(".\\screenshots\\"+folderName+"_"+LocalDate.now()+"\\" + FileName + ".png"));
         Shutterbug.shootPage(WebDriverRunner.getWebDriver(), Capture.FULL_SCROLL, true).save(".\\screenshots\\"+folderName+"_"+LocalDate.now()+"\\");
     }
-
-
 
     @AfterMethod(alwaysRun = true)
     public void closeBrowser() {

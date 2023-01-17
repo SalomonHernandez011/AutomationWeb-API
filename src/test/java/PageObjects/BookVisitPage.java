@@ -16,6 +16,7 @@ public class BookVisitPage extends BasePageObject {
     private final SelenideElement spayNeuterOption = $x("//div[@class='text-base w400 title false' and text()='Spay/ Neuter']");
     private final SelenideElement dentalOption = $x("//div[@class='text-base w400 title false' and text()='Dental']");
     private final SelenideElement otherOption = $x("//div[@class='text-base w400 title false' and text()='Other']");
+    private final SelenideElement backBookVisit = $x("//div[contains(@style, 'cursor:')]");
     public BookVisitPage() {
         assertTrue(isOpened(), "Book Visit Page is opened");
     }
@@ -27,5 +28,17 @@ public class BookVisitPage extends BasePageObject {
     public WellnessPage clickWellnessOption(){
         wellnessOption.click();
         return new WellnessPage();
+    }
+
+    public void clickTravel(){
+        travelCertificateOption.click();
+    }
+
+    public void clickBookVisit(){
+        backBookVisit.click();
+    }
+
+    public void clickDental(){
+        dentalOption.click();
     }
 }

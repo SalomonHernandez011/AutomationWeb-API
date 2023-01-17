@@ -14,6 +14,7 @@ import java.io.IOException;
 
 import static constants.CommonProperties.LOGIN_URL;
 import static constants.CommonProperties.USER_EMAIL;
+import static constants.CommonTexts.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class WellnessOptionsTest extends BaseWebTest {
@@ -31,6 +32,7 @@ public class WellnessOptionsTest extends BaseWebTest {
                 .clickLogIn()
                 .clickBookVisit()
                 .clickWellnessOption();
+        wellnessPage = new WellnessPage();
     }
 
     @Test
@@ -39,39 +41,59 @@ public class WellnessOptionsTest extends BaseWebTest {
     }
 
     private void navigateToWellness() {
-        wellnessPage = new WellnessPage();
         TakeScreenshot("GetCare_Wellness");
+
+        assertThat(wellnessPage.wellnessTitleText())
+                .as("text should match",  WELLNESS_TITLE.getCommonTexts())
+                .isEqualTo(WELLNESS_TITLE.getCommonTexts());
+
+        assertThat(wellnessPage.wellnessSubTitleText())
+                .as("text should match", WELLNESS_SUBTEXT.getCommonTexts())
+                .isEqualTo(WELLNESS_SUBTEXT.getCommonTexts());
+
+        assertThat(wellnessPage.wellnessQuestionText())
+                .as("text should match", WELLNESS_QUESTION.getCommonTexts())
+                .isEqualTo(WELLNESS_QUESTION.getCommonTexts());
+
+
+
         assertThat(wellnessPage.annualWellnessText())
-                .as("text should match", "Annual wellness visit")
-                .isEqualTo("Annual wellness visit");
+                .as("text should match",  WELLNESS_OPTION_ONE.getCommonTexts())
+                .isEqualTo(WELLNESS_OPTION_ONE.getCommonTexts());
+
+        assertThat(wellnessPage.annualWellnessText())
+                .as("text should match",   WELLNESS_SUBTEXT_ONE.getCommonTexts())
+                .isEqualTo(WELLNESS_SUBTEXT_ONE.getCommonTexts());
+
 
         assertThat(wellnessPage.travelAnxietyText())
-                .as("text should match", "Travel anxiety")
-                .isEqualTo("Travel anxiety");
+                .as("text should match", WELLNESS_OPTION_TWO.getCommonTexts())
+                .isEqualTo(WELLNESS_OPTION_TWO.getCommonTexts());
 
         assertThat(wellnessPage.vaccinationText())
-                .as("text should match", "Vaccinations")
-                .isEqualTo("Vaccinations");
+                .as("text should match", WELLNESS_OPTION_THREE.getCommonTexts())
+                .isEqualTo(WELLNESS_OPTION_THREE.getCommonTexts());
 
         assertThat(wellnessPage.motionSicknessText())
-                .as("text should match", "Motion sickness")
-                .isEqualTo("Motion sickness");
+                .as("text should match", WELLNESS_OPTION_FOUR.getCommonTexts())
+                .isEqualTo(WELLNESS_OPTION_FOUR.getCommonTexts());
 
         assertThat(wellnessPage.weightManagementText())
-                .as("text should match", "Weight management")
-                .isEqualTo("Weight management");
+                .as("text should match", WELLNESS_OPTION_FIVE.getCommonTexts())
+                .isEqualTo(WELLNESS_OPTION_FIVE.getCommonTexts());
 
         assertThat(wellnessPage.behaviourIssuesText())
-                .as("text should match", "Behavioral issues")
-                .isEqualTo("Behavioral issues");
+                .as("text should match", WELLNESS_OPTION_SIX.getCommonTexts())
+                .isEqualTo(WELLNESS_OPTION_SIX.getCommonTexts());
 
         assertThat(wellnessPage.separationAnxietyText())
-                .as("text should match", "Separation anxiety")
-                .isEqualTo("Separation anxiety");
+                .as("text should match", WELLNESS_OPTION_SEVEN.getCommonTexts())
+                .isEqualTo(WELLNESS_OPTION_SEVEN.getCommonTexts());
 
         assertThat(wellnessPage.otherOnSiteText())
-                .as("text should match", "Other Onsite services")
-                .isEqualTo("Other Onsite services");
+                .as("text should match", WELLNESS_OPTION_EIGHT.getCommonTexts())
+                .isEqualTo(WELLNESS_OPTION_EIGHT.getCommonTexts());
+
         TakeScreenshot("GetCare_Wellness");
     }
 }
