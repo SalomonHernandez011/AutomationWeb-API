@@ -8,7 +8,9 @@ import static org.testng.Assert.assertTrue;
 
 public class DidYouGetOurTextPage extends BasePageObject {
     private final SelenideElement smsTextCode = $("#dygotp-sms-code-input");
-    private final SelenideElement smsContinue = $("#dygot-send-again-button");
+    private final SelenideElement smsContinue = $("#dygot-continue-button");
+    private final SelenideElement smsResend = $("#dygot-send-again-button");
+
     private final SelenideElement timeRemaining = $("div[class='time-remaining']");
 
     public DidYouGetOurTextPage() {

@@ -44,16 +44,15 @@ public class ReviewAppointmentPageTest extends BaseWebTest {
         assertThat(appointmentPage.topImagePresent())
                 .as("Image should be present")
                 .isTrue();
+
         TakeScreenshot("Appointments");
         assertThat(appointmentPage.welcomeText())
                 .as("Title should match", "Appointments")
                 .isEqualTo("Appointments");
-        TakeScreenshot("Appointments");
-
 
         assertThat(appointmentPage.appointmentTitleText())
-                .as("Text should match", "Upcomming appointments")
-                .isEqualTo("Upcomming appointments");
+                .as("Text should match", "Upcoming appointments")
+                .isEqualTo("Upcoming appointments");
 
         assertThat(appointmentPage.pastAppointmentText())
                 .as("Text should match", "Past Appointments")

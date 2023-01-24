@@ -16,11 +16,12 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
+import static constants.CommonProperties.PROVET_URL;
 import static constants.CommonProperties.URL;
 @Listeners(AllureScreenShooter.class)
 public class BaseWebTest {
-
     ConfigFileReader configFileReader;
+
 
     @BeforeMethod(alwaysRun = true)
     public void startBrowser() {
@@ -42,7 +43,18 @@ public class BaseWebTest {
         configFileReader = new ConfigFileReader();
         Selenide.open(ConfigFileReader.getProperty(URL));
         WebDriverRunner.getWebDriver().manage().window().maximize();
+    }
 
+    public void openProVetBrowser(){
+        WebDriverRunner.getWebDriver().quit();
+        ChromeOptions options = new ChromeOptions()
+                .addArguments("--lang=en-US")
+                .addArguments("--disable-geolocation")
+                .addArguments("--incognito")
+                .addArguments("--deny-permission-prompts");
+        Configuration.browserCapabilities = options;
+        Selenide.open(ConfigFileReader.getProperty(PROVET_URL));
+        WebDriverRunner.getWebDriver().manage().window().maximize();
     }
     public static void TakeScreenshot(String folderName){
         Shutterbug.shootPage(WebDriverRunner.getWebDriver(), Capture.FULL_SCROLL, true).save(".\\screenshots\\"+folderName+"_"+LocalDate.now()+"\\");

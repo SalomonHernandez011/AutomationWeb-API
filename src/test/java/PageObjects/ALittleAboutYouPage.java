@@ -46,6 +46,9 @@ public class ALittleAboutYouPage extends BasePageObject {
         littleCheckbox.click();
         return this;
     }
+    public boolean checkboxIsMarked(){
+        return littleCheckbox.isSelected();
+    }
 
     public EnterPetDetailsPage clickContinue(){
         waitUntilElementCondition(littleContinueButton, Condition.interactable, shortWait);

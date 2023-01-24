@@ -13,14 +13,15 @@ public class LandingPage extends BasePageObject {
     private final SelenideElement swipeStart = $("div[class^='swiper-pagination']");
 
     private final SelenideElement imageLanding = $x("//img[contains(@src, 'da')]");
-    private final SelenideElement secondOption = $x("//body/div[@id='root']/div[1]/div[1]/div[2]/span[2]");
+    private final SelenideElement secondOption = $x("/html/body/div/div/div/div/div[2]/span[2]");
 
     private final SelenideElement secondTextOption = $("div[class^='text-container']");
-    private final SelenideElement thirdOption = $x("/html/body/div/div/div/div[2]/span[3]");
-    private final SelenideElement getStarted = $("div.link");
+    private final SelenideElement thirdOption = $x("/html/body/div/div/div/div/div[2]/span[3]");
+    private final SelenideElement getStarted = $("div[class^='link']");
     private final SelenideElement thirdTextOption = $("div[class^='text-sm']");
     private final SelenideElement virtualAccessText = $("div[class=' w600 text-2xl']");
     private final SelenideElement noExams = $("div[class='w600 text-2xl']");
+    private final SelenideElement skipOption = $("span[class='skip-action']");
 
     public LandingPage() {
         assertTrue(isOpened(), "Landing Page is opened");
@@ -67,5 +68,8 @@ public class LandingPage extends BasePageObject {
         return noExams.getText();
     }
 
-    
+    public LocationPage clickSkip(){
+        skipOption.click();
+        return new LocationPage();
+    }
 }

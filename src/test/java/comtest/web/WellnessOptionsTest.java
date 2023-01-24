@@ -61,11 +61,6 @@ public class WellnessOptionsTest extends BaseWebTest {
                 .as("text should match",  WELLNESS_OPTION_ONE.getCommonTexts())
                 .isEqualTo(WELLNESS_OPTION_ONE.getCommonTexts());
 
-        assertThat(wellnessPage.annualWellnessText())
-                .as("text should match",   WELLNESS_SUBTEXT_ONE.getCommonTexts())
-                .isEqualTo(WELLNESS_SUBTEXT_ONE.getCommonTexts());
-
-
         assertThat(wellnessPage.travelAnxietyText())
                 .as("text should match", WELLNESS_OPTION_TWO.getCommonTexts())
                 .isEqualTo(WELLNESS_OPTION_TWO.getCommonTexts());

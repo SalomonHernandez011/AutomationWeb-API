@@ -13,9 +13,9 @@ public class EnterPetDetailsPage extends BasePageObject {
     private final SelenideElement petDetailsContinueButton = $("#aapp-continue-button");
     private final SelenideElement petNameField = $("#aapp-pet-name-input");
     private final SelenideElement dogOption = $("#option-dog-animaltype");
-    private final SelenideElement catOption = $("#option-cat");
+    private final SelenideElement catOption = $("#option-cat-animaltype");
     private final SelenideElement maleOption = $("#option-male-gender");
-    private final SelenideElement femaleOption = $("#option-cat");
+    private final SelenideElement femaleOption = $("#option-female-gender");
     private final SelenideElement uploadPhoto = $("input[id='aapp-photo-pet-input']");
     private final SelenideElement calendarOption = $("input[name='petsBirthDay']");
     private final SelenideElement breedOptions = $("#aapp-breed-auto-fill");
@@ -43,16 +43,24 @@ public class EnterPetDetailsPage extends BasePageObject {
         petNameField.setValue(name);
         return this;
     }
-    public EnterPetDetailsPage selectDog(){
-        dogOption.click();
+    public EnterPetDetailsPage selectPet(String pet){
+        if (pet.equalsIgnoreCase("Dog")){
+            dogOption.click();
+        }else{
+            catOption.click();
+        }
         return this;
     }
     public EnterPetDetailsPage selectCat(){
         catOption.click();
         return this;
     }
-    public EnterPetDetailsPage selectMale(){
-        maleOption.click();
+    public EnterPetDetailsPage selectGender(String gender){
+        if(gender.equalsIgnoreCase("Male")){
+            maleOption.click();
+        }else{
+            femaleOption.click();
+        }
         return this;
     }
     public EnterPetDetailsPage selectFemale(){

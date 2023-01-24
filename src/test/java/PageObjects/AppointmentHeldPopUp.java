@@ -4,12 +4,13 @@ import com.codeborne.selenide.SelenideElement;
 import comtest.BasePageObject;
 
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$x;
 import static org.testng.Assert.assertTrue;
 
 public class AppointmentHeldPopUp extends BasePageObject {
 
-    private final SelenideElement iUnderstandButton = $("button[class='btn btn-primary-rounded btn-undefined undefined']");
-    private final SelenideElement backButton = $("button[class='btn btn-secondary btn-undefined undefined']");
+    private final SelenideElement iUnderstandButton = $x("//button[@id='edit-membership-cancel-button' and text()='i understand']");
+    private final SelenideElement backButton = $x("//button[@id='edit-membership-cancel-button' and text()='back']");
 
 
 

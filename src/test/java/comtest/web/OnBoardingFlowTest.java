@@ -6,12 +6,11 @@ import com.codeborne.selenide.Selenide;
 import com.github.javafaker.Faker;
 import com.twilio.Twilio;
 import comtest.BaseWebTest;
-import dataProvider.ConfigFileReader;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import static constants.CommonProperties.LOGIN_URL;
+
 import static constants.CommonTexts.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -47,24 +46,7 @@ public class OnBoardingFlowTest extends BaseWebTest {
         TakeScreenshot("Onboarding");
         Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
     }
-
-    @Test
-    public void verifyOnBoardingFlowPage() {
-        callLandingPage();
-        thirdPageView();
-        getStartedPage();
-        selectLocationAndSignUp();
-        isBreedEnabled();
-        fillPetInformation();
-        selectAppointment();
-        fillMoreInformation();
-        generatePassword();
-        enterSmsText();
-        billingInfo();
-        addPaymentInformation();
-        getCareLandingPage();
-    }
-    private void callLandingPage() {
+    protected void callLandingPage() {
         landingPage.clickNext();
 
         assertThat(landingPage.getCaruselText(VIRTUAL_ACCESS.getCommonTexts()))
@@ -76,7 +58,7 @@ public class OnBoardingFlowTest extends BaseWebTest {
                 .isEqualTo(SECOND_SCREEN_TEXT.getCommonTexts());
         TakeScreenshot("OnBoarding");
     }
-    private void thirdPageView() {
+    protected void thirdPageView() {
         landingPage.clickThirdOption();
 
         assertThat(landingPage.getCaruselTextSecond(NO_EXAMS.getCommonTexts()))
@@ -89,7 +71,7 @@ public class OnBoardingFlowTest extends BaseWebTest {
         TakeScreenshot("OnBoarding");
     }
 
-    private void getStartedPage() {
+    protected void getStartedPage() {
         locationPage = landingPage.getStartedSelect()
                 .clearZipField()
                 .setTextToZip("20002");
@@ -106,7 +88,7 @@ public class OnBoardingFlowTest extends BaseWebTest {
                 .isTrue();
         TakeScreenshot("OnBoarding");
     }
-    private void selectLocationAndSignUp() {
+    protected void selectLocationAndSignUp() {
         locationPage = new LocationPage();
          locationPage.clickLocationCard()
                 .clickNotAnEmergency();
@@ -116,54 +98,60 @@ public class OnBoardingFlowTest extends BaseWebTest {
                 .setLastNameField(lastName)
                 .setUserEmail(email)
                 .markCheckBox();
+        Selenide.sleep(1000);
         TakeScreenshot("OnBoarding");
         aLittleAboutYouPage.clickContinue();
         TakeScreenshot("OnBoarding");
     }
 
-    private void isBreedEnabled() {
+    protected void isBreedEnabled() {
         enterPetDetailsPage = new EnterPetDetailsPage();
         assertThat(enterPetDetailsPage.breedEnabled())
                 .as("It should be disabled")
                 .isFalse();
     }
-    private void fillPetInformation() {
+    protected void fillPetInformation(String pet, String gender, String breed) {
         enterPetDetailsPage.setPetName(petName)
-                .selectDog()
-                .selectMale()
+                .selectPet(pet) //will update to selectPetType
+                .selectGender(gender) //will update to selectGender
                 .uploadImage()
                 .setAge("1","0","0");
         assertThat(enterPetDetailsPage.breedEnabled())
                 .as("It should be disabled")
                 .isTrue();
-        enterPetDetailsPage.enterBreed(petBreed)
+        enterPetDetailsPage.enterBreed(breed) //send text to apply into search
                 .selectBreedOption();
         TakeScreenshot("OnBoarding");
         enterPetDetailsPage.selectContinue();
     }
 
-    private void selectAppointment() {
+    protected void selectAppointment() {
         chooseAppointmentPage = new ChooseAppointmentPage();
+        //need to add choosing between Sick and Healthy
+        //will need to add selector for choose available appointment automagically still not done by FE
         TakeScreenshot("OnBoarding");
         chooseAppointmentPage.getAppointmentOptions();
-        chooseAppointmentPage.setAppointment()
-                .continueAppointment();
+        TakeScreenshot("OnBoarding");
+        chooseAppointmentPage.setAppointment();
+        TakeScreenshot("OnBoarding");
+        chooseAppointmentPage.continueAppointment();
         TakeScreenshot("OnBoarding");
         appointmentHeldPopUp = new AppointmentHeldPopUp();
         appointmentHeldPopUp.clickUnderstand();
         TakeScreenshot("OnBoarding");
     }
 
-    private void fillMoreInformation() {
+    protected void fillMoreInformation() {
         aLittleMoreAboutPage = new ALittleMoreAboutPage();
         TakeScreenshot("OnBoarding");
         aLittleMoreAboutPage.setPhoneNumber(phoneNumber)
                 .checkAppointmentCheckbox()
                 .checkDiscountCheckBox();
+        Selenide.sleep(1000);
         TakeScreenshot("OnBoarding");
         aLittleMoreAboutPage.selectContinue();
     }
-    private void generatePassword() {
+    protected void generatePassword() {
         createPasswordPage = new CreatePasswordPage();
         TakeScreenshot("OnBoarding");
         createPasswordPage.setPassword(password)
@@ -172,7 +160,7 @@ public class OnBoardingFlowTest extends BaseWebTest {
         createPasswordPage.nextPageContinue();
     }
 
-    private void enterSmsText() {
+    protected void enterSmsText() {
         didYouGetOurTextPage = new DidYouGetOurTextPage();
         TakeScreenshot("OnBoarding");
         didYouGetOurTextPage.setSmsCode(TwilioOTPHandle.smsMessage());
@@ -181,13 +169,13 @@ public class OnBoardingFlowTest extends BaseWebTest {
         didYouGetOurTextPage .clickContinueSMS();
     }
 
-    private void billingInfo() {
+    protected void billingInfo() {
         yourMembershipPage = new YourMembershipPage();
         TakeScreenshot("OnBoarding");
         yourMembershipPage.continueToPayment();
     }
 
-    private void addPaymentInformation() {
+    protected void addPaymentInformation() {
         addPaymentPage = new AddPaymentPage();
         TakeScreenshot("OnBoarding");
         addPaymentPage.setNameOnCard("Salomon")
@@ -195,6 +183,7 @@ public class OnBoardingFlowTest extends BaseWebTest {
                 .setExpiration("1223")
                 .setCvcCode("123")
                 .setAddressOnPayment("Address")
+                .setAddressTwoOnPayment("Address2")
                 .setCityText("San Diego")
                 .openStateDropdown()
                 .setState("California")
@@ -203,7 +192,7 @@ public class OnBoardingFlowTest extends BaseWebTest {
         addPaymentPage.selectContinue();
     }
 
-    private void getCareLandingPage() {
+    protected void getCareLandingPage() {
         getCareLandingPage = new GetCareLandingPage();
         TakeScreenshot("OnBoarding");
     }

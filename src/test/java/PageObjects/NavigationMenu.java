@@ -24,4 +24,9 @@ public class NavigationMenu extends BasePageObject {
         appointmentOption.click();
         return  new AppointmentPage();
     }
+
+    public SettingsSectionPage clickSettings(){
+        settingsOptions.click();
+        return new SettingsSectionPage();
+    }
 }

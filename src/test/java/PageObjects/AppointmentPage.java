@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Selenide.$x;
 import static org.testng.Assert.assertTrue;
 
 public class AppointmentPage extends BasePageObject {
-    private final SelenideElement upcomingAppointmentsTitle = $x("//div[@class='section-title text-base' and text()='Upcomming appointments']");
+    private final SelenideElement upcomingAppointmentsTitle = $x("//div[@class='section-title text-base' and text()='Upcoming appointments']");
     private final SelenideElement pastAppointmentsTitle = $x("//div[@class='section-title text-base' and text()='Past Appointments']");
     private final SelenideElement bottomImage = $("div[class='image-bottom'] img");
     private final SelenideElement topImage = $("div[class='logo'] img");

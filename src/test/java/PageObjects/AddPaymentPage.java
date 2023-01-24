@@ -15,9 +15,11 @@ public class AddPaymentPage extends BasePageObject {
     private final SelenideElement cardNumber = $x("//*[contains(@name, 'cardnumber')]");
     private final SelenideElement expirationText = $x("//*[contains(@name, 'exp-date')]");
     private final SelenideElement cvcText = $x("//*[contains(@name, 'cvc')]");
-    private final SelenideElement addressText = $("#apmp-address-input");
+    private final SelenideElement addressText = $("input[name=address]");
+    private final SelenideElement addressTextTwo = $("input[name=address2]");
+
     private final SelenideElement cityText = $("#apmp-city-input");
-    private final SelenideElement stateDropdown = $("div[class=' css-9485xe-control']");
+    private final SelenideElement stateDropdown = $("#apmp-state-select > div");
     private final SelenideElement zipCodeText = $("#apmp-zip-code-input");
     private final SelenideElement continueFromPayment = $("#apmp-continue-button");
     private final SelenideElement frame = $x("//iframe[contains(@name,'__privateStripeFrame')]");
@@ -62,6 +64,12 @@ public class AddPaymentPage extends BasePageObject {
     public AddPaymentPage setAddressOnPayment(String address){
         isElementWithTextDisplayedAndScrollToIt("Address");
         addressText.setValue(address);
+        return this;
+    }
+
+    public AddPaymentPage setAddressTwoOnPayment(String address){
+        addressTextTwo.scrollIntoView(true);
+        addressTextTwo.setValue(address);
         return this;
     }
 
