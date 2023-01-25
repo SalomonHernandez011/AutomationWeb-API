@@ -11,12 +11,14 @@ public class OnBoardingCatMaleTest extends OnBoardingFlowTest{
         selectLocationAndSignUp();
         isBreedEnabled();
         fillPetInformation("Cat", "Male", "Siamese");
-        selectAppointment();
+        selectAppointment(false);
         fillMoreInformation();
         generatePassword();
         enterSmsText();
         billingInfo();
         addPaymentInformation();
+        logInWithCreds();
         getCareLandingPage();
+        openProvet();
     }
 }

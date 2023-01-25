@@ -29,7 +29,7 @@ public enum CommonTexts {
     TRAVEL_SECOND_SUBTEXT("International destinations"),
     TRAVEL_THIRD_SUBTEXT("Hawaiian Islands"),
 
-    //Anual Wellness Text
+    //Annual Wellness Text
 
     WELLNESS_TITLE("Wellness"),
     WELLNESS_SUBTEXT("Pet wellness exams and services."),
@@ -62,7 +62,20 @@ public enum CommonTexts {
     DENTAL_FIRST_SUBTEXT("Estimate consultation"),
     DENTAL_SECOND_SUBTEXT("Annual cleaning"),
     DENTAL_THIRD_SUBTEXT("Removing teeth"),
-    DENTAL_FOURTH_SUBTEXT("Other concerns");
+    DENTAL_FOURTH_SUBTEXT("Other concerns"),
+    //BookVisitOptions
+    BOOKVISIT_WELLNESS("Wellness"),
+    BOOKVISIT_SICK("Sick"),
+    BOOKVISIT_TRAVEL("Travel"),
+    BOOKVISIT_SPAYNEUTER("Spay / Neuter"),
+    BOOKVISIT_DENTAL("Dental"),
+    BOOKVISIT_OTHER("Other"),
+    BOOKVISIT_WELLNESS_SUBTEXT("Healthy pet wellness exams and services"),
+    BOOKVISIT_SICK_SUBTEXT("If your pet is unwell"),
+    BOOKVISIT_TRAVEL_SUBTEXT("Health certificates, anxiety, and motion..."),
+    BOOKVISIT_SPAYNEUTER_SUBTEXT("Reproductive health"),
+    BOOKVISIT_DENTAL_SUBTEXT("Exams, cleaning, extractions"),
+    BOOKVISIT_OTHER_SUBTEXT("Tell us what you need");
 
     @Getter
     private final String CommonTexts;

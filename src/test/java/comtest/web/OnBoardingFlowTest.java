@@ -3,15 +3,20 @@ package comtest.web;
 import PageObjects.*;
 import Util.TwilioOTPHandle;
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.SelenideElement;
 import com.github.javafaker.Faker;
 import com.twilio.Twilio;
 import comtest.BaseWebTest;
+import dataProvider.ConfigFileReader;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 
+import static constants.CommonProperties.PROVET_EMAIL;
+import static constants.CommonProperties.URL;
 import static constants.CommonTexts.*;
+import static dataProvider.ConfigFileReader.getProperty;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class OnBoardingFlowTest extends BaseWebTest {
@@ -28,6 +33,10 @@ public class OnBoardingFlowTest extends BaseWebTest {
     private AddPaymentPage addPaymentPage;
     private GetCareLandingPage getCareLandingPage;
     private AppointmentHeldPopUp appointmentHeldPopUp;
+    private LogInPage logInPage;
+    private ProVetCloudLogInPage proVetCloudLogInPage;
+    private ProvetDashboardPage provetDashboardPage;
+    private SickPetPage sickPetPage;
     private String email = "parkertestingace"+"+"+RandomStringUtils.randomNumeric(9)+"@gmail.com";
     private String petName = faker.pokemon().name();
     private String firstName = faker.name().firstName();
@@ -112,22 +121,23 @@ public class OnBoardingFlowTest extends BaseWebTest {
     }
     protected void fillPetInformation(String pet, String gender, String breed) {
         enterPetDetailsPage.setPetName(petName)
-                .selectPet(pet) //will update to selectPetType
-                .selectGender(gender) //will update to selectGender
+                .selectPet(pet)
+                .selectGender(gender)
                 .uploadImage()
                 .setAge("1","0","0");
         assertThat(enterPetDetailsPage.breedEnabled())
                 .as("It should be disabled")
                 .isTrue();
-        enterPetDetailsPage.enterBreed(breed) //send text to apply into search
+        enterPetDetailsPage.enterBreed(breed)
                 .selectBreedOption();
         TakeScreenshot("OnBoarding");
         enterPetDetailsPage.selectContinue();
     }
 
-    protected void selectAppointment() {
+    protected void selectAppointment(boolean sick) {
         chooseAppointmentPage = new ChooseAppointmentPage();
         //need to add choosing between Sick and Healthy
+        chooseAppointmentPage.sickOption(sick);
         //will need to add selector for choose available appointment automagically still not done by FE
         TakeScreenshot("OnBoarding");
         chooseAppointmentPage.getAppointmentOptions();
@@ -192,9 +202,34 @@ public class OnBoardingFlowTest extends BaseWebTest {
         addPaymentPage.selectContinue();
     }
 
+    protected void logInWithCreds(){
+        logInPage = new LogInPage();
+        TakeScreenshot("OnBoarding");
+        logInPage.setLoginEmail(email);
+        logInPage.setPassword(password);
+        logInPage.clickLogIn();
+    }
+
     protected void getCareLandingPage() {
         getCareLandingPage = new GetCareLandingPage();
         TakeScreenshot("OnBoarding");
+    }
+
+    protected void openProvet(){
+        openProVetBrowser();
+        proVetCloudLogInPage = new ProVetCloudLogInPage();
+        proVetCloudLogInPage.enterUsername(ConfigFileReader.getProperty(PROVET_EMAIL))
+                .enterPassword("salomones100%cabron")
+                .clickLogIn();
+        provetDashboardPage = new ProvetDashboardPage();
+        provetDashboardPage.searchCreatedAppointment(firstName+ " "+lastName);
+        Selenide.sleep(2000);
+        TakeScreenshot("OnBoarding");
+    }
+
+    protected void sickScreen(){
+        sickPetPage = new SickPetPage();
+        sickPetPage.clickSickButton();
     }
 
 }

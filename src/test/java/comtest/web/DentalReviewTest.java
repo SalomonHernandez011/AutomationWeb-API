@@ -16,6 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class DentalReviewTest extends BaseWebTest {
     private LogInPage logInPage;
     private DentalPage dentalPage;
+    private GetCareLandingPage getCareLandingPage;
 
     @BeforeMethod
     public void setup(){
@@ -23,8 +24,9 @@ public class DentalReviewTest extends BaseWebTest {
         logInPage = new LogInPage();
         logInPage.setLoginEmail(ConfigFileReader.getProperty(USER_EMAIL))
                 .setPassword("1234asdF@")
-                .clickLogIn()
-                .clickBookVisit()
+                .clickLogIn();
+        getCareLandingPage = new GetCareLandingPage();
+        getCareLandingPage.clickBookVisit()
                 .clickDental();
         dentalPage = new DentalPage();
 

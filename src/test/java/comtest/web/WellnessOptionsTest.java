@@ -29,8 +29,9 @@ public class WellnessOptionsTest extends BaseWebTest {
         logInPage = new LogInPage();
         logInPage.setLoginEmail(ConfigFileReader.getProperty(USER_EMAIL))
                 .setPassword("1234asdF@")
-                .clickLogIn()
-                .clickBookVisit()
+                .clickLogIn();
+        getCareLandingPage = new GetCareLandingPage();
+        getCareLandingPage.clickBookVisit()
                 .clickWellnessOption();
         wellnessPage = new WellnessPage();
     }

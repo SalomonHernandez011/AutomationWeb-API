@@ -12,12 +12,14 @@ public class OnBoardingDogFemaleTest extends OnBoardingFlowTest {
         selectLocationAndSignUp();
         isBreedEnabled();
         fillPetInformation("Dog", "Female", "Collie");
-        selectAppointment();
+        selectAppointment(true);
         fillMoreInformation();
         generatePassword();
         enterSmsText();
         billingInfo();
         addPaymentInformation();
+        logInWithCreds();
+        sickScreen();
         getCareLandingPage();
     }
 }

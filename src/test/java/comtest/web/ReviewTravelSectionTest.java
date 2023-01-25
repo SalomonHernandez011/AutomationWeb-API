@@ -16,6 +16,7 @@ public class ReviewTravelSectionTest extends BaseWebTest {
         private LogInPage logInPage;
         private BookVisitPage bookVisitPage;
         private TravelPage travelPage;
+        private GetCareLandingPage getCareLandingPage;
 
         @BeforeMethod
         public void setup() {
@@ -23,8 +24,9 @@ public class ReviewTravelSectionTest extends BaseWebTest {
             logInPage = new LogInPage();
             logInPage.setLoginEmail(ConfigFileReader.getProperty(USER_EMAIL))
                     .setPassword("1234asdF@")
-                    .clickLogIn()
-                    .clickBookVisit();
+                    .clickLogIn();
+            getCareLandingPage = new GetCareLandingPage();
+            getCareLandingPage.clickBookVisit();
             bookVisitPage = new BookVisitPage();
             bookVisitPage.clickTravel();
             travelPage = new TravelPage();

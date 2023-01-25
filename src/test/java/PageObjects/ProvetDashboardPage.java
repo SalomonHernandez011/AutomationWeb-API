@@ -18,6 +18,7 @@ public class ProvetDashboardPage extends BasePageObject {
     }
 
     public void searchCreatedAppointment(String user){
+        appointmentSearch.scrollIntoView(true);
         appointmentSearch.setValue(user);
     }
 
