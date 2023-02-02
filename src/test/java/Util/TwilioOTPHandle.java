@@ -6,7 +6,7 @@ import com.twilio.rest.api.v2010.account.Message;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
-import static comtest.web.OnBoardingFlowTest.ACCOUNT_SID;
+import static comtest.OnBoardingFlowTest.ACCOUNT_SID;
 
 public class TwilioOTPHandle {
 

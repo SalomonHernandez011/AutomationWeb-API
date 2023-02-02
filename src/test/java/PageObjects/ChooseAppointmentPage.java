@@ -70,4 +70,9 @@ public class ChooseAppointmentPage extends BasePageObject {
         }
          return this;
     }
+//    public boolean isSickSelected(){
+//            var element = $x(format(daysOnCalendar, date));
+//            return isElementCondition(element, attribute("aria-selected", "true"), shortWait);
+//
+//    }
 }

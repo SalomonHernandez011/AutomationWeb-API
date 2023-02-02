@@ -19,11 +19,11 @@ public class EnterPetDetailsPage extends BasePageObject {
     private final SelenideElement uploadPhoto = $("input[id='aapp-photo-pet-input']");
     private final SelenideElement calendarOption = $("input[name='petsBirthDay']");
     private final SelenideElement breedOptions = $("#aapp-breed-auto-fill");
-    private final SelenideElement spayedYes = $("");
-    private final SelenideElement spayedNo = $("");
+    private final SelenideElement spayedYes = $("#option-yes-spayedorneutered");
+    private final SelenideElement spayedNo = $("#option-no-spayedorneutered");
     private final SelenideElement spayedNotSure = $("div[id^='option-not']");
-    private final SelenideElement otherYes = $("");
-    private final SelenideElement skipOption = $("#option-skip");
+    private final SelenideElement otherVetYes = $("div[id='option-yes-transferpetanotherveterinay']");
+    private final SelenideElement skipOption = $("#option-skip-transferpetanotherveterinayp");
     private final SelenideElement vetName = $("#aapp-veterinary-name-input");
     private final SelenideElement vetNumber = $("#aapp-veterinary-phone-input");
     private final SelenideElement breedFirstOptionDropdown = $("#aapp-breed-auto-fill-option-1");
@@ -63,6 +63,29 @@ public class EnterPetDetailsPage extends BasePageObject {
         }
         return this;
     }
+    public EnterPetDetailsPage otherVet(){
+        otherVetYes.click();
+        return this;
+    }
+    public EnterPetDetailsPage vetInfo(String vet){
+        vetName.setValue(vet);
+        return this;
+    }
+    public EnterPetDetailsPage vetNumber(String vetNum){
+        vetNumber.setValue(vetNum);
+        return this;
+    }
+    public EnterPetDetailsPage spayedSelect(String option){
+        if(option.equalsIgnoreCase("Yes")){
+            spayedYes.click();
+        }else if (option.equalsIgnoreCase("No")){
+            spayedNo.click();
+        }else {
+            spayedNotSure.click();
+        }
+        return this;
+    }
+
     public EnterPetDetailsPage selectFemale(){
         femaleOption.click();
         return this;

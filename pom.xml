@@ -229,7 +229,7 @@
                 <login.url>https://dev.parkerandace.com/login</login.url>
                 <provet.url>https://us.provetcloud.com/4756/auth/login/</provet.url>
                 <usr.email>parkertestingace+dev001@gmail.com</usr.email>
-
+                <provet.email>salomon.hernandez@parkerandace.com</provet.email>
             </properties>
         </profile>
 
@@ -258,6 +258,7 @@
                 <login.url>https://uat.parkerandace.com/login</login.url>
                 <provet.url>https://us.provetcloud.com/4756/auth/login/</provet.url>
                 <usr.email>parkertestingace+312867547@gmail.com</usr.email>
+                <provet.email>salomon.hernandez@parkerandace.com</provet.email>
             </properties>
         </profile>
 

@@ -7,7 +7,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static org.testng.Assert.assertTrue;
 
 public class IsThisAnEmergencyPopUp extends BasePageObject {
-    private final SelenideElement notAnEmergencyButton = $("button[class^='btn-not-emergency']");
+    private final SelenideElement notAnEmergencyButton = $("#btn-not-emergency");
     private final SelenideElement emergencyIcon = $("div[class='icon-urgent-emergency']");
     public IsThisAnEmergencyPopUp() {
         assertTrue(isOpened(), "Landing Page is opened");

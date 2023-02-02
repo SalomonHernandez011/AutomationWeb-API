@@ -1,22 +1,17 @@
-package comtest.web;
+package comtest;
 
 import PageObjects.*;
 import Util.TwilioOTPHandle;
 import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.SelenideElement;
 import com.github.javafaker.Faker;
 import com.twilio.Twilio;
 import comtest.BaseWebTest;
 import dataProvider.ConfigFileReader;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
-
 
 import static constants.CommonProperties.PROVET_EMAIL;
-import static constants.CommonProperties.URL;
 import static constants.CommonTexts.*;
-import static dataProvider.ConfigFileReader.getProperty;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class OnBoardingFlowTest extends BaseWebTest {
@@ -42,7 +37,6 @@ public class OnBoardingFlowTest extends BaseWebTest {
     private String firstName = faker.name().firstName();
     private String lastName = faker.name().lastName();
     private String phoneNumber = "3396752234";
-    private String smsText = faker.number().digits(4);
     private String password = "1234asdF@";
     private String petBreed = "Collie";
     private String cardNumber = "4242424242424242";
@@ -131,12 +125,30 @@ public class OnBoardingFlowTest extends BaseWebTest {
         enterPetDetailsPage.enterBreed(breed)
                 .selectBreedOption();
         TakeScreenshot("OnBoarding");
+
+    }
+
+    protected void spayedTransfered(String spayed){
+        enterPetDetailsPage.spayedSelect(spayed);
+    }
+
+    protected void otherVet(boolean otherVet){
+        if(otherVet == true){
+            vetInfo();
+        }else{
+            enterPetDetailsPage.selectContinue();
+        }
+    }
+
+    protected void vetInfo(){
+        enterPetDetailsPage.otherVet()
+                .vetInfo("Test Vet Name")
+                .vetNumber(phoneNumber);
         enterPetDetailsPage.selectContinue();
     }
 
     protected void selectAppointment(boolean sick) {
         chooseAppointmentPage = new ChooseAppointmentPage();
-        //need to add choosing between Sick and Healthy
         chooseAppointmentPage.sickOption(sick);
         //will need to add selector for choose available appointment automagically still not done by FE
         TakeScreenshot("OnBoarding");
@@ -207,6 +219,7 @@ public class OnBoardingFlowTest extends BaseWebTest {
         TakeScreenshot("OnBoarding");
         logInPage.setLoginEmail(email);
         logInPage.setPassword(password);
+        TakeScreenshot("OnBoarding");
         logInPage.clickLogIn();
     }
 
@@ -229,7 +242,9 @@ public class OnBoardingFlowTest extends BaseWebTest {
 
     protected void sickScreen(){
         sickPetPage = new SickPetPage();
+        TakeScreenshot("OnBoarding");
         sickPetPage.clickSickButton();
+        TakeScreenshot("OnBoarding");
     }
 
 }

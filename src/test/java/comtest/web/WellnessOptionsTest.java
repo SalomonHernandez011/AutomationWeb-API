@@ -42,6 +42,7 @@ public class WellnessOptionsTest extends BaseWebTest {
     }
 
     private void navigateToWellness() {
+        wellnessPage.titleDisplay();
         TakeScreenshot("GetCare_Wellness");
 
         assertThat(wellnessPage.wellnessTitleText())
@@ -56,39 +57,61 @@ public class WellnessOptionsTest extends BaseWebTest {
                 .as("text should match", WELLNESS_QUESTION.getCommonTexts())
                 .isEqualTo(WELLNESS_QUESTION.getCommonTexts());
 
-
-
-        assertThat(wellnessPage.annualWellnessText())
+        assertThat(wellnessPage.wellnessTitlesText(WELLNESS_OPTION_ONE))
                 .as("text should match",  WELLNESS_OPTION_ONE.getCommonTexts())
-                .isEqualTo(WELLNESS_OPTION_ONE.getCommonTexts());
+                .isTrue();
 
-        assertThat(wellnessPage.travelAnxietyText())
+        assertThat(wellnessPage.wellnessTitlesText(WELLNESS_OPTION_TWO))
                 .as("text should match", WELLNESS_OPTION_TWO.getCommonTexts())
-                .isEqualTo(WELLNESS_OPTION_TWO.getCommonTexts());
+                .isTrue();
 
-        assertThat(wellnessPage.vaccinationText())
+        assertThat(wellnessPage.wellnessTitlesText(WELLNESS_OPTION_THREE))
                 .as("text should match", WELLNESS_OPTION_THREE.getCommonTexts())
-                .isEqualTo(WELLNESS_OPTION_THREE.getCommonTexts());
+                .isTrue();
 
-        assertThat(wellnessPage.motionSicknessText())
+        assertThat(wellnessPage.wellnessTitlesText(WELLNESS_OPTION_FOUR))
                 .as("text should match", WELLNESS_OPTION_FOUR.getCommonTexts())
-                .isEqualTo(WELLNESS_OPTION_FOUR.getCommonTexts());
+                .isTrue();
 
-        assertThat(wellnessPage.weightManagementText())
+        assertThat(wellnessPage.wellnessTitlesText(WELLNESS_OPTION_FIVE))
                 .as("text should match", WELLNESS_OPTION_FIVE.getCommonTexts())
-                .isEqualTo(WELLNESS_OPTION_FIVE.getCommonTexts());
+                .isTrue();
 
-        assertThat(wellnessPage.behaviourIssuesText())
+        assertThat(wellnessPage.wellnessTitlesText(WELLNESS_OPTION_SIX))
                 .as("text should match", WELLNESS_OPTION_SIX.getCommonTexts())
-                .isEqualTo(WELLNESS_OPTION_SIX.getCommonTexts());
+                .isTrue();
 
-        assertThat(wellnessPage.separationAnxietyText())
-                .as("text should match", WELLNESS_OPTION_SEVEN.getCommonTexts())
-                .isEqualTo(WELLNESS_OPTION_SEVEN.getCommonTexts());
+        assertThat(wellnessPage.wellnessTitlesText(WELLNESS_OPTION_SEVEN))
+                .as("Text Should Match", WELLNESS_OPTION_SEVEN.getCommonTexts())
+                .isTrue();
 
-        assertThat(wellnessPage.otherOnSiteText())
-                .as("text should match", WELLNESS_OPTION_EIGHT.getCommonTexts())
-                .isEqualTo(WELLNESS_OPTION_EIGHT.getCommonTexts());
+        assertThat(wellnessPage.wellnessSubTitlesText(WELLNESS_SUBTEXT_ONE))
+                .as("Text Should Match", WELLNESS_SUBTEXT_ONE.getCommonTexts())
+                .isTrue();
+
+        assertThat(wellnessPage.wellnessSubTitlesText(WELLNESS_SUBTEXT_TWO))
+                .as("Text Should Match", WELLNESS_SUBTEXT_TWO.getCommonTexts())
+                .isTrue();
+
+        assertThat(wellnessPage.wellnessSubTitlesText(WELLNESS_SUBTEXT_THREE))
+                .as("Text Should Match", WELLNESS_SUBTEXT_THREE.getCommonTexts())
+                .isTrue();
+
+        assertThat(wellnessPage.wellnessSubTitlesText(WELLNESS_SUBTEXT_FOUR))
+                .as("Text Should Match", WELLNESS_SUBTEXT_FOUR.getCommonTexts())
+                .isTrue();
+
+        assertThat(wellnessPage.wellnessSubTitlesText(WELLNESS_SUBTEXT_FIVE))
+                .as("Text Should Match", WELLNESS_SUBTEXT_FIVE.getCommonTexts())
+                .isTrue();
+
+        assertThat(wellnessPage.wellnessSubTitlesText(WELLNESS_SUBTEXT_SIX))
+                .as("Text Should Match", WELLNESS_SUBTEXT_SIX.getCommonTexts())
+                .isTrue();
+
+        assertThat(wellnessPage.wellnessSubTitlesText(WELLNESS_SUBTEXT_SEVEN))
+                .as("Text Should Match", WELLNESS_SUBTEXT_SEVEN.getCommonTexts())
+                .isTrue();
 
         TakeScreenshot("GetCare_Wellness");
     }
