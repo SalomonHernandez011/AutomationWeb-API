@@ -1,27 +1,25 @@
-package comtest.web;
+package comtest.web.onBoarding;
 
 import comtest.OnBoardingFlowTest;
 import org.testng.annotations.Test;
 
-public class OnBoardingDogFemaleTest extends OnBoardingFlowTest {
-
+public class OnBoardingCatMaleTest extends OnBoardingFlowTest {
     @Test
-    public void femaleDogTest(){
+    public void maleCatTest(){
         callLandingPage();
         thirdPageView();
         getStartedPage();
         selectLocationAndSignUp();
         isBreedEnabled();
-        fillPetInformation("Dog", "Female", "Collie");
-        spayedTransfered("Yes");
+        fillPetInformation("Cat", "Male", "Siamese");
+        spayedTransfered("No");
         otherVet(true);
-        selectAppointment(true);
+        selectAppointment(false);
         fillMoreInformation();
         generatePassword();
         enterSmsText();
         billingInfo();
         addPaymentInformation();
-        sickScreen();
         getCareLandingPage();
         openProvet();
     }

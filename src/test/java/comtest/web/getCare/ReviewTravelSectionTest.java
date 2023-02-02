@@ -1,4 +1,4 @@
-package comtest.web;
+package comtest.web.getCare;
 
 import PageObjects.*;
 import com.codeborne.selenide.Selenide;

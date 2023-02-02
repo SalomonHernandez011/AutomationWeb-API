@@ -1,4 +1,4 @@
-package comtest.web;
+package comtest.web.getCare;
 
 import PageObjects.EnterResetCodePage;
 import PageObjects.ForgotYourPasswordPage;

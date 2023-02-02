@@ -130,6 +130,7 @@ public class OnBoardingFlowTest extends BaseWebTest {
 
     protected void spayedTransfered(String spayed){
         enterPetDetailsPage.spayedSelect(spayed);
+        TakeScreenshot("OnBoarding");
     }
 
     protected void otherVet(boolean otherVet){
@@ -144,6 +145,7 @@ public class OnBoardingFlowTest extends BaseWebTest {
         enterPetDetailsPage.otherVet()
                 .vetInfo("Test Vet Name")
                 .vetNumber(phoneNumber);
+        TakeScreenshot("OnBoarding");
         enterPetDetailsPage.selectContinue();
     }
 

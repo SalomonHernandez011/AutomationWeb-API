@@ -1,4 +1,4 @@
-package comtest.web;
+package comtest.web.onBoarding;
 
 import PageObjects.ALittleAboutYouPage;
 import PageObjects.LandingPage;
