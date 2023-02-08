@@ -244,7 +244,8 @@
         <url>https://qa.parkerandace.com/on-boarding</url>
         <login.url>https://qa.parkerandace.com/login</login.url>
         <provet.url>https://us.provetcloud.com/4756/auth/login/</provet.url>
-        <usr.email>parkertestingace+406172347@gmail.com</usr.email>
+<!--        <usr.email>parkertestingace+406172347@gmail.com</usr.email>-->
+        <usr.email>salomontesting+qa012@gmail.com</usr.email>
         <provet.email>salomon.hernandez@parkerandace.com</provet.email>
     </properties>
     </profile>

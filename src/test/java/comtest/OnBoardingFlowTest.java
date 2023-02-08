@@ -215,16 +215,6 @@ public class OnBoardingFlowTest extends BaseWebTest {
         TakeScreenshot("OnBoarding");
         addPaymentPage.selectContinue();
     }
-
-    protected void logInWithCreds(){
-        logInPage = new LogInPage();
-        TakeScreenshot("OnBoarding");
-        logInPage.setLoginEmail(email);
-        logInPage.setPassword(password);
-        TakeScreenshot("OnBoarding");
-        logInPage.clickLogIn();
-    }
-
     protected void getCareLandingPage() {
         getCareLandingPage = new GetCareLandingPage();
         TakeScreenshot("OnBoarding");
@@ -237,9 +227,12 @@ public class OnBoardingFlowTest extends BaseWebTest {
                 .enterPassword("salomones100%cabron")
                 .clickLogIn();
         provetDashboardPage = new ProvetDashboardPage();
+        provetDashboardPage.allAppointments();
         provetDashboardPage.searchCreatedAppointment(firstName+ " "+lastName);
         Selenide.sleep(2000);
+        provetDashboardPage.clickPetParent(firstName,lastName);
         TakeScreenshot("OnBoarding");
+
     }
 
     protected void sickScreen(){
@@ -248,5 +241,4 @@ public class OnBoardingFlowTest extends BaseWebTest {
         sickPetPage.clickSickButton();
         TakeScreenshot("OnBoarding");
     }
-
 }
