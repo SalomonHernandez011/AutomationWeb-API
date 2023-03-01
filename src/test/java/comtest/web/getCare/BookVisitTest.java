@@ -39,53 +39,53 @@ public class BookVisitTest extends BaseWebTest {
         bookVisitPage = new BookVisitPage();
         TakeScreenshot("BookVisit");
 
-        assertThat(bookVisitPage.getWellnessText())
+        assertThat(bookVisitPage.bookVisitTitlesText(BOOKVISIT_WELLNESS))
                 .as("Text should match", BOOKVISIT_WELLNESS.getCommonTexts())
-                .isEqualTo(BOOKVISIT_WELLNESS.getCommonTexts());
+                .isTrue();
 
-        assertThat(bookVisitPage.getWellnessSubText())
-                .as("Text should match", BOOKVISIT_WELLNESS_SUBTEXT.getCommonTexts())
-                .isEqualTo(BOOKVISIT_WELLNESS_SUBTEXT.getCommonTexts());
+        assertThat(bookVisitPage.bookVisitSubTitlesText(BOOKVISIT_WELLNESS_SUBTEXT))
+                .as("Text should match")
+                .isTrue();
 
-        assertThat(bookVisitPage.getSickText())
-                .as("Text should match", BOOKVISIT_SICK.getCommonTexts())
-                .isEqualTo(BOOKVISIT_SICK.getCommonTexts());
+        assertThat(bookVisitPage.bookVisitTitlesText(BOOKVISIT_SICK))
+                .as("Text should match")
+                .isTrue();
 
-        assertThat(bookVisitPage.getSickSubText())
+        assertThat(bookVisitPage.bookVisitSubTitlesText(BOOKVISIT_SICK_SUBTEXT))
                 .as("Text should match", BOOKVISIT_SICK_SUBTEXT.getCommonTexts())
-                .isEqualTo(BOOKVISIT_SICK_SUBTEXT.getCommonTexts());
+                .isTrue();
 
-        assertThat(bookVisitPage.getTravelText())
-                .as("Text should match", BOOKVISIT_TRAVEL.getCommonTexts())
-                .isEqualTo(BOOKVISIT_TRAVEL.getCommonTexts());
+        assertThat(bookVisitPage.bookVisitTitlesText(BOOKVISIT_TRAVEL))
+                .as("Text should match")
+                .isTrue();
 
-        assertThat(bookVisitPage.getTravelSubText())
-                .as("Text should match", BOOKVISIT_TRAVEL_SUBTEXT.getCommonTexts())
-                .isEqualTo(BOOKVISIT_TRAVEL_SUBTEXT.getCommonTexts());
+        assertThat(bookVisitPage.bookVisitSubTitlesText(BOOKVISIT_TRAVEL_SUBTEXT))
+                .as("Text should match")
+                .isTrue();
 
-        assertThat(bookVisitPage.getSpayNeuterText())
-                .as("Text should match", BOOKVISIT_SPAYNEUTER.getCommonTexts())
-                .isEqualTo(BOOKVISIT_SPAYNEUTER.getCommonTexts());
+        assertThat(bookVisitPage.bookVisitTitlesText(BOOKVISIT_SPAYNEUTER))
+                .as("Text should match")
+                .isTrue();
 
-        assertThat(bookVisitPage.getSpayNeuterSubText())
-                .as("Text should match", BOOKVISIT_SPAYNEUTER_SUBTEXT.getCommonTexts())
-                .isEqualTo(BOOKVISIT_SPAYNEUTER_SUBTEXT.getCommonTexts());
+        assertThat(bookVisitPage.bookVisitSubTitlesText(BOOKVISIT_SPAYNEUTER_SUBTEXT))
+                .as("Text should match")
+                .isTrue();
 
-        assertThat(bookVisitPage.getDentalText())
-                .as("Text should match", BOOKVISIT_DENTAL.getCommonTexts())
-                .isEqualTo(BOOKVISIT_DENTAL.getCommonTexts());
+        assertThat(bookVisitPage.bookVisitTitlesText(BOOKVISIT_DENTAL))
+                .as("Text should match")
+                .isTrue();
 
-        assertThat(bookVisitPage.getDentalSubText())
-                .as("Text should match", BOOKVISIT_DENTAL_SUBTEXT.getCommonTexts())
-                .isEqualTo(BOOKVISIT_DENTAL_SUBTEXT.getCommonTexts());
+        assertThat(bookVisitPage.bookVisitSubTitlesText(BOOKVISIT_DENTAL_SUBTEXT))
+                .as("Text should match")
+                .isTrue();
 
-        assertThat(bookVisitPage.getOtherText())
-                .as("Text should match", BOOKVISIT_OTHER.getCommonTexts())
-                .isEqualTo(BOOKVISIT_OTHER.getCommonTexts());
+        assertThat(bookVisitPage.bookVisitTitlesText(BOOKVISIT_OTHER))
+                .as("Text should match")
+                .isTrue();
 
-        assertThat(bookVisitPage.getOtherSubText())
-                .as("Text should match", BOOKVISIT_OTHER_SUBTEXT.getCommonTexts())
-                .isEqualTo(BOOKVISIT_OTHER_SUBTEXT.getCommonTexts());
+        assertThat(bookVisitPage.bookVisitSubTitlesText(BOOKVISIT_OTHER_SUBTEXT))
+                .as("Text should match")
+                .isTrue();
 
         assertThat(bookVisitPage.imgPresent())
                 .as("should be displayed")

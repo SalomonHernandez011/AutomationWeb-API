@@ -9,9 +9,9 @@ import static org.testng.Assert.assertTrue;
 
 public class AnnualVisitPage extends BasePageObject {
 
-    private final SelenideElement selectVeterinarianText = $("div[class='welcome-text text-3xl w400']");
-    private final SelenideElement allAvailableText = $("div[class='section-title text-base']");
-    private final SelenideElement subVeterinarianPageText = $("div[class='welcome-text text-sm w400']");
+    private final SelenideElement selectVeterinarianText = $("div[class='top-welcome text-3-xl-highway-series-9']");
+    private final SelenideElement allAvailableText = $("div[class='section-title text-base-highway-series-7']");
+    private final SelenideElement subVeterinarianPageText = $("div[class='welcome-text text-sm-inter-font-normal']");
     private final SelenideElement bottomImage = $x("//img[contains(@src, 'ottom')]");
 
     public AnnualVisitPage() {

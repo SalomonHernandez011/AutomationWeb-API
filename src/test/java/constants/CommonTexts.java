@@ -19,8 +19,8 @@ public enum CommonTexts {
     PASSWORD_REQUIRED("password is required"),
     INVALID_EMAIL("Invalid email address"),
     //Travel Texts
-    TRAVEL_TITLE("Travel certificate"),
-    TRAVEL_SUBTITLE("Travel documents and services"),
+    TRAVEL_TITLE("Travel"),
+    TRAVEL_SUBTITLE("Health certificates, anxiety, and motion sickness"),
     TRAVEL_QUESTION("Where are you traveling?"),
     FIRST_TRAVEL_OPTION_TEXT("Domestic"),
     SECOND_TRAVEL_OPTION_TEXT("International"),

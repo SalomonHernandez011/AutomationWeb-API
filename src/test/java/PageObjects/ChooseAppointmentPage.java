@@ -32,6 +32,7 @@ public class ChooseAppointmentPage extends BasePageObject {
     }
 
     public ElementsCollection getAppointmentOptions() {
+        isElementDisplayed(timePicker);
         ElementsCollection options = getAppointmentCollection();
         for (int i = 0; i < options.size(); i++) {
             options.get(i).click();

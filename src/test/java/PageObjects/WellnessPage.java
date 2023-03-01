@@ -12,14 +12,14 @@ import static org.testng.Assert.assertTrue;
 
 public class WellnessPage extends BasePageObject {
 
-    private final SelenideElement wellnessTitle = $x("//div[@class='welcome-text text-3xl w400' and text()='Wellness']");
-    private final SelenideElement wellnessSubTitle = $("div[class='welcome-text text-sm w400']");
-    private final SelenideElement wellnessQuestion = $("div[class$='text-base']");
+    private final SelenideElement wellnessTitle = $x("//div[@class='top-welcome text-3-xl-highway-series-9' and text()='Wellness']");
+    private final SelenideElement wellnessSubTitle = $("div[class='welcome-text text-sm-inter-font-normal']");
+    private final SelenideElement wellnessQuestion = $("div[class$='section-title text-base-highway-series-7']");
     private final SelenideElement wellnessOptionList = $("div[class='options-list']");
-    private final SelenideElement annualWellnessVisitOption = $x("//div[@class='text-base w400 title false' and text()='Wellness visit']");
+    private final SelenideElement wellnessVisitOption = $x("//div[@class='text-lg-highway-series-7 undefined' and text()='Wellness visit']");
 
-    private static final String WELLNESS_MENU_TITLE = "//div[@class='text-base w400 title false' and text()='%s']";
-    private static final String WELLNESS_MENU_SUBTITLE = "//div[@class='subtitle text-sm w400 false' and text()='%s']";
+    private static final String WELLNESS_MENU_TITLE = "//div[@class='text-lg-highway-series-7 undefined' and text()='%s']";
+    private static final String WELLNESS_MENU_SUBTITLE = "//div[@class='text-sm-inter-font-normal undefined' and text()='%s']";
 
 
     public WellnessPage() {
@@ -46,7 +46,7 @@ public class WellnessPage extends BasePageObject {
         return wellnessQuestion.getText();
     }
     public void clickAnnualWellNessVisit(){
-        annualWellnessVisitOption.click();
+        wellnessVisitOption.click();
     }
 
     public boolean wellnessTitlesText(CommonTexts label) {

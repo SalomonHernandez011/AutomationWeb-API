@@ -19,10 +19,12 @@ public class ChatPage extends BasePageObject {
 
     public boolean isOpened() {
         switchTo().frame(frame);
+        isElementDisplayed(chatBox);
         return isPageObjectLoaded(chatBox, chatQuestion);
     }
 
     public void chatText(String text){
+        isElementDisplayed(chatBox);
         chatBox.setValue(text);
         Selenide.sleep(2000);
     }

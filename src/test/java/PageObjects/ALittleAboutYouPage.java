@@ -8,7 +8,6 @@ import com.codeborne.selenide.SelenideElement;
 import static com.codeborne.selenide.Selenide.$;
 import static org.testng.Assert.assertTrue;
 
-
 public class ALittleAboutYouPage extends BasePageObject {
     private final SelenideElement firstNameField = $("#almayp-first-name-input");
     private final SelenideElement lastNameField = $("#almayp-last-name-input");

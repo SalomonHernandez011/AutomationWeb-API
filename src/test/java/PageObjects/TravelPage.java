@@ -9,10 +9,10 @@ import static java.lang.String.format;
 import static org.testng.Assert.assertTrue;
 
 public class TravelPage extends BasePageObject {
-    private final SelenideElement travelTitle = $("div[class='welcome-text text-3xl w400']");
+    private final SelenideElement travelTitle = $("div[class='top-welcome text-3-xl-highway-series-9']");
     private final SelenideElement bottomTravelImage = $("div[class='image-bottom'] img");
-    private final SelenideElement subTitleText = $("div[class='welcome-text text-sm w400']");
-    private final SelenideElement travelWhereText = $("div[class$='text-base']");
+    private final SelenideElement subTitleText = $("div[class='welcome-text text-sm-inter-font-normal']");
+    private final SelenideElement travelWhereText = $("div[class$='section-title text-base-highway-series-7']");
     private final SelenideElement optionOne = $x("//div[contains(text(),'Domestic')]");
     private final SelenideElement optionTwo = $x("//div[contains(text(),'International')]");
     private final SelenideElement optionThree = $x("//div[contains(text(),'Hawaii')]");

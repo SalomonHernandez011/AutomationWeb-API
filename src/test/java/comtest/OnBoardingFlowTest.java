@@ -32,6 +32,8 @@ public class OnBoardingFlowTest extends BaseWebTest {
     private ProVetCloudLogInPage proVetCloudLogInPage;
     private ProvetDashboardPage provetDashboardPage;
     private SickPetPage sickPetPage;
+    private ChatPage chatPage;
+    private NavigationMenu navigationMenu;
     private String email = "parkertestingace"+"+"+RandomStringUtils.randomNumeric(9)+"@gmail.com";
     private String petName = faker.pokemon().name();
     private String firstName = faker.name().firstName();
@@ -68,7 +70,7 @@ public class OnBoardingFlowTest extends BaseWebTest {
                 .as("Text Should Match", NO_EXAMS.getCommonTexts())
                 .isEqualTo(NO_EXAMS.getCommonTexts());
 
-        assertThat(landingPage.getTextFromLastScreen())
+        assertThat(landingPage.labsText(THIRD_SCREEN_TEXT))
                 .as("Text Should Match", THIRD_SCREEN_TEXT.getCommonTexts())
                 .isEqualTo(THIRD_SCREEN_TEXT.getCommonTexts());
         TakeScreenshot("OnBoarding");
@@ -99,8 +101,7 @@ public class OnBoardingFlowTest extends BaseWebTest {
         TakeScreenshot("OnBoarding");
         aLittleAboutYouPage.setFirstNameField(firstName)
                 .setLastNameField(lastName)
-                .setUserEmail(email)
-                .markCheckBox();
+                .setUserEmail(email);
         Selenide.sleep(1000);
         TakeScreenshot("OnBoarding");
         aLittleAboutYouPage.clickContinue();
@@ -118,7 +119,7 @@ public class OnBoardingFlowTest extends BaseWebTest {
                 .selectPet(pet)
                 .selectGender(gender)
                 .uploadImage()
-                .setAge("1","0","0");
+                .setAge("1","2","3");
         assertThat(enterPetDetailsPage.breedEnabled())
                 .as("It should be disabled")
                 .isTrue();
@@ -168,9 +169,9 @@ public class OnBoardingFlowTest extends BaseWebTest {
     protected void fillMoreInformation() {
         aLittleMoreAboutPage = new ALittleMoreAboutPage();
         TakeScreenshot("OnBoarding");
-        aLittleMoreAboutPage.setPhoneNumber(phoneNumber)
-                .checkAppointmentCheckbox()
-                .checkDiscountCheckBox();
+        aLittleMoreAboutPage.setPhoneNumber(phoneNumber);
+//                .checkAppointmentCheckbox()
+//                .checkDiscountCheckBox();
         Selenide.sleep(1000);
         TakeScreenshot("OnBoarding");
         aLittleMoreAboutPage.selectContinue();
@@ -187,8 +188,8 @@ public class OnBoardingFlowTest extends BaseWebTest {
     protected void enterSmsText() {
         didYouGetOurTextPage = new DidYouGetOurTextPage();
         TakeScreenshot("OnBoarding");
-        didYouGetOurTextPage.setSmsCode(TwilioOTPHandle.smsMessage());
         Selenide.sleep(3000);
+        didYouGetOurTextPage.setSmsCode(TwilioOTPHandle.smsMessage());
         TakeScreenshot("OnBoarding");
         didYouGetOurTextPage .clickContinueSMS();
     }
@@ -207,7 +208,6 @@ public class OnBoardingFlowTest extends BaseWebTest {
                 .setExpiration("1223")
                 .setCvcCode("123")
                 .setAddressOnPayment("Address")
-                .setAddressTwoOnPayment("Address2")
                 .setCityText("San Diego")
                 .openStateDropdown()
                 .setState("California")
@@ -217,6 +217,12 @@ public class OnBoardingFlowTest extends BaseWebTest {
     }
     protected void getCareLandingPage() {
         getCareLandingPage = new GetCareLandingPage();
+        TakeScreenshot("OnBoarding");
+    }
+    protected void petProfileSection(){
+        navigationMenu = new NavigationMenu();
+        navigationMenu.clickPetSection();
+        Selenide.sleep(2000);
         TakeScreenshot("OnBoarding");
     }
 
@@ -231,6 +237,7 @@ public class OnBoardingFlowTest extends BaseWebTest {
         provetDashboardPage.searchCreatedAppointment(firstName+ " "+lastName);
         Selenide.sleep(2000);
         provetDashboardPage.clickPetParent(firstName,lastName);
+        Selenide.sleep(2000);
         TakeScreenshot("OnBoarding");
 
     }
@@ -240,5 +247,8 @@ public class OnBoardingFlowTest extends BaseWebTest {
         TakeScreenshot("OnBoarding");
         sickPetPage.clickSickButton();
         TakeScreenshot("OnBoarding");
+        chatPage = new ChatPage();
+        chatPage.chatText("Test Sick OnBoarding Message");
+        chatPage.sendMessage();
     }
 }

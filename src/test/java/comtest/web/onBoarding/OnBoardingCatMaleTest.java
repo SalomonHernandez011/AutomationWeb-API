@@ -11,7 +11,7 @@ public class OnBoardingCatMaleTest extends OnBoardingFlowTest {
         getStartedPage();
         selectLocationAndSignUp();
         isBreedEnabled();
-        fillPetInformation("Dog", "Male", "Collie");
+        fillPetInformation("Dog", "Male", "Maltipoo");
         spayedTransfered("No");
         otherVet(false);
         selectAppointment(false);
@@ -21,6 +21,7 @@ public class OnBoardingCatMaleTest extends OnBoardingFlowTest {
         billingInfo();
         addPaymentInformation();
         getCareLandingPage();
+        petProfileSection();
         openProvet();
     }
 }

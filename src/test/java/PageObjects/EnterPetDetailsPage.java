@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static org.testng.Assert.assertTrue;
 
 public class EnterPetDetailsPage extends BasePageObject {
-    private final SelenideElement petDetailsTitle = $("div[class^='highway-9']");
+    private final SelenideElement petDetailsTitle = $("span[class='text-3-xl-highway-series-9']");
     private final SelenideElement petDetailsContinueButton = $("#aapp-continue-button");
     private final SelenideElement petNameField = $("#aapp-pet-name-input");
     private final SelenideElement dogOption = $("#option-dog-animaltype");

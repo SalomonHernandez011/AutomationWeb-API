@@ -20,7 +20,7 @@ public abstract class BasePageObject {
 
     public final long pageWait = Long.parseLong("5000");
 
-    public final long shortWait = Long.parseLong("3000");
+    public final long shortWait = Long.parseLong("5000");
 
     public final long longWait = Long.parseLong("7000");
 
@@ -58,7 +58,7 @@ public abstract class BasePageObject {
 
     // TODO: Add more conditions as needed
     protected boolean isElementDisplayed(SelenideElement element) {
-        return isElementCondition(element, visible, shortWait);
+        return isElementCondition(element, visible, longWait);
     }
 
     protected boolean isElementEnabled(SelenideElement element) {

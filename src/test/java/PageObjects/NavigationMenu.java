@@ -11,6 +11,7 @@ public class NavigationMenu extends BasePageObject {
     private final SelenideElement appointmentOption = $("#bottom-menu-appointments");
     private final SelenideElement petsOption = $("#bottom-menu-pets");
     private final SelenideElement settingsOptions = $("#bottom-menu-settings");
+    private final SelenideElement petSection = $("#bottom-menu-pets");
 
     public NavigationMenu() {
         assertTrue(isOpened(), "Navigation Menu is present");
@@ -28,5 +29,8 @@ public class NavigationMenu extends BasePageObject {
     public SettingsSectionPage clickSettings(){
         settingsOptions.click();
         return new SettingsSectionPage();
+    }
+    public void clickPetSection(){
+        petSection.click();
     }
 }

@@ -22,7 +22,7 @@ public class ChatNowTest extends BaseWebTest {
         Selenide.open(ConfigFileReader.getProperty(LOGIN_URL));
         logInPage = new LogInPage();
         logInPage.setLoginEmail(ConfigFileReader.getProperty(USER_EMAIL))
-                .setPassword("Abc@123!")
+                .setPassword("1234asdF@")
                 .clickLogIn();
         getCareLandingPage = new GetCareLandingPage();
         getCareLandingPage.clickChatNow()

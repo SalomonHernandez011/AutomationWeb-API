@@ -7,10 +7,10 @@ import static com.codeborne.selenide.Selenide.$;
 import static org.testng.Assert.assertTrue;
 
 public class ChatNowPage extends BasePageObject {
-    private final SelenideElement pageTitle = $("div[class='welcome-text text-3xl w400']");
+    private final SelenideElement pageTitle = $("div[class='top-welcome text-3-xl-highway-series-9']");
     private final SelenideElement pageButton = $("button[class*='btn-primary']");
     public ChatNowPage() {
-        assertTrue(isOpened(), "Payment Page is opened");
+        assertTrue(isOpened(), "Chat now Page is opened");
     }
 
     public boolean isOpened() {

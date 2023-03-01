@@ -18,7 +18,8 @@ public class SickPetPage extends BasePageObject {
         return isPageObjectLoaded(sickImage, sickButton);
     }
 
-    public void clickSickButton(){
+    public ChatPage clickSickButton(){
         sickButton.click();
+        return new ChatPage();
     }
 }

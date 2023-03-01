@@ -8,10 +8,10 @@ import static com.codeborne.selenide.Selenide.*;
 import static org.testng.Assert.assertTrue;
 
 public class GetCareLandingPage extends BasePageObject {
-    private final SelenideElement welcomeText = $("div[class^='welcome-text']");
+    private final SelenideElement welcomeText = $("div[class^='top-welcome text-3-xl-highway-series-9']");
     private final SelenideElement optionsList = $("div[class='options-list']");
-    private final SelenideElement bookVisitOption = $x("//div[@class='text-base w400 title false' and text()='Book visit']");
-    private final SelenideElement chatNow = $x("//div[@class='text-base w400 title undefined' and text()='Chat now']");
+    private final SelenideElement bookVisitOption = $x("//div[@class='text-lg-highway-series-7 false' and text()='Book visit']");
+    private final SelenideElement chatNow = $x("//div[@class='text-lg-highway-series-7 undefined' and text()='Chat now']");
 
 
     public GetCareLandingPage() {
