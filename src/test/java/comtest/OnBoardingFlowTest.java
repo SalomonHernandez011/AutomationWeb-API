@@ -205,7 +205,7 @@ public class OnBoardingFlowTest extends BaseWebTest {
         TakeScreenshot("OnBoarding");
         addPaymentPage.setNameOnCard("Salomon")
                 .setCardNumber(cardNumber)
-                .setExpiration("1223")
+                .setExpiration("1255")
                 .setCvcCode("123")
                 .setAddressOnPayment("Address")
                 .setCityText("San Diego")
@@ -250,5 +250,6 @@ public class OnBoardingFlowTest extends BaseWebTest {
         chatPage = new ChatPage();
         chatPage.chatText("Test Sick OnBoarding Message");
         chatPage.sendMessage();
+
     }
 }

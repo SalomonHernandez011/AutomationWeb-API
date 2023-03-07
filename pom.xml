@@ -149,8 +149,9 @@
         <!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured-common -->
         <dependency>
             <groupId>io.rest-assured</groupId>
-            <artifactId>rest-assured-common</artifactId>
-            <version>4.3.0</version>
+            <artifactId>rest-assured</artifactId>
+            <version>4.4.0</version>
+            <scope>test</scope>
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.assertthat/selenium-shutterbug -->
         <dependency>
@@ -163,6 +164,58 @@
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>2.10.1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.appium/java-client -->
+        <dependency>
+            <groupId>io.appium</groupId>
+            <artifactId>java-client</artifactId>
+            <version>8.3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>5.1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>5.1.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>4.9.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>3.0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-core</artifactId>
+            <version>3.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-impl</artifactId>
+            <version>3.0.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <version>3.0.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>4.9.3</version>
         </dependency>
     </dependencies>
 
@@ -244,8 +297,7 @@
         <url>https://qa.parkerandace.com/on-boarding</url>
         <login.url>https://qa.parkerandace.com/login</login.url>
         <provet.url>https://us.provetcloud.com/4756/auth/login/</provet.url>
-<!--        <usr.email>parkertestingace+406172347@gmail.com</usr.email>-->
-        <usr.email>salomontesting+qa012@gmail.com</usr.email>
+        <usr.email>parkertestingace+947709910@gmail.com</usr.email>
         <provet.email>salomon.hernandez@parkerandace.com</provet.email>
     </properties>
     </profile>
@@ -258,7 +310,7 @@
                 <url>https://uat.parkerandace.com/on-boarding</url>
                 <login.url>https://uat.parkerandace.com/login</login.url>
                 <provet.url>https://us.provetcloud.com/4756/auth/login/</provet.url>
-                <usr.email>parkertestingace+312867547@gmail.com</usr.email>
+                <usr.email>parkertestingace+uat01@gmail.com</usr.email>
                 <provet.email>salomon.hernandez@parkerandace.com</provet.email>
             </properties>
         </profile>

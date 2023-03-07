@@ -18,11 +18,8 @@ import java.util.Map;
 
 import static constants.CommonProperties.PROVET_URL;
 import static constants.CommonProperties.URL;
-@Listeners(AllureScreenShooter.class)
 public class BaseWebTest {
     ConfigFileReader configFileReader;
-
-
     @BeforeMethod(alwaysRun = true)
     public void startBrowser() {
 //        System.setProperty("chromeoptions.mobileEmulation", "deviceName=Nexus 5");

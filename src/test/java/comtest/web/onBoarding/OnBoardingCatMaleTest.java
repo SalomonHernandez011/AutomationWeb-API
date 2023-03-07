@@ -11,7 +11,7 @@ public class OnBoardingCatMaleTest extends OnBoardingFlowTest {
         getStartedPage();
         selectLocationAndSignUp();
         isBreedEnabled();
-        fillPetInformation("Dog", "Male", "Maltipoo");
+        fillPetInformation("Dog", "Female", "Pug");
         spayedTransfered("No");
         otherVet(false);
         selectAppointment(false);

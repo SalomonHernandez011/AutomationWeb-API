@@ -47,7 +47,7 @@ public class ApiTest {
 
     @BeforeAll
     public static void setup() {
-        RestAssured.baseURI = "https://qa.parkerandace.com/api/swagger-ui/oauth2-redirect.html";
+        RestAssured.baseURI = "https://api.provetcloud.com/v2";
     }
 
     @Test

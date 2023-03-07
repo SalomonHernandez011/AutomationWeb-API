@@ -9,8 +9,8 @@ import static org.testng.Assert.assertTrue;
 
 public class AppointmentHeldPopUp extends BasePageObject {
 
-    private final SelenideElement iUnderstandButton = $x("//button[@id='edit-membership-cancel-button' and text()='i understand']");
-    private final SelenideElement backButton = $x("//button[@id='edit-membership-cancel-button' and text()='back']");
+    private final SelenideElement iUnderstandButton = $("#edit-membership-cancel-button");
+    private final SelenideElement backButton = $("#edit-membership-cancel-button");
 
 
 
