@@ -1,11 +1,11 @@
 package comtest;
 
 import PageObjects.*;
+import Util.DogBreedListGenerator;
 import Util.TwilioOTPHandle;
 import com.codeborne.selenide.Selenide;
 import com.github.javafaker.Faker;
 import com.twilio.Twilio;
-import comtest.BaseWebTest;
 import dataProvider.ConfigFileReader;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.testng.annotations.BeforeMethod;
@@ -16,6 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class OnBoardingFlowTest extends BaseWebTest {
     Faker faker = new Faker();
+    Faker fakerBreeds = new DogBreedListGenerator();
     private LandingPage landingPage;
     private LocationPage locationPage;
     private ALittleAboutYouPage aLittleAboutYouPage;

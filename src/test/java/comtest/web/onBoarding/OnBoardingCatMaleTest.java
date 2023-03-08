@@ -1,9 +1,12 @@
 package comtest.web.onBoarding;
 
+import Util.DogBreedListGenerator;
 import comtest.OnBoardingFlowTest;
 import org.testng.annotations.Test;
 
 public class OnBoardingCatMaleTest extends OnBoardingFlowTest {
+    DogBreedListGenerator dogBreedListGenerator = new DogBreedListGenerator();
+    private String dogBreed = dogBreedListGenerator.dogBreed();
     @Test
     public void maleCatTest(){
         callLandingPage();
@@ -11,7 +14,7 @@ public class OnBoardingCatMaleTest extends OnBoardingFlowTest {
         getStartedPage();
         selectLocationAndSignUp();
         isBreedEnabled();
-        fillPetInformation("Dog", "Female", "Pug");
+        fillPetInformation("Cat", "Female", dogBreed);
         spayedTransfered("No");
         otherVet(false);
         selectAppointment(false);
