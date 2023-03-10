@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="BrowserStack Test automation regression suite"
+       thread-count="3" parallel="tests" verbose="3">
+
+
+    <test name="BrowserStack Test - FF">
+        <parameter name="browsername" value="ios" />
+        <parameter name="device" value="iPhone 14 Pro Max" />
+        <parameter name="osVersion" value="16" />
+        <classes>
+            <class name="comtest.BaseMobileTest" />
+            <class name="comtest.OnBoardingMobileTest" />
+        </classes>
+
+    </test>
+
+    <test name="BrowserStack Test - Chrome">
+        <parameter name="browsername" value="android" />
+        <parameter name="device" value="Samsung Galaxy S22 Ultra" />
+        <parameter name="osVersion" value="12.0" />
+
+        <classes>
+            <class name="comtest.BaseMobileTest" />
+            <class name="comtest.OnBoardingMobileTest" />
+        </classes>
+
+    </test>
+
+
+
+
+
+
+
+
+
+
+</suite>
