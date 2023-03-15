@@ -15,7 +15,7 @@ public class OnBoardingCatTest extends OnBoardingFlowTest {
         selectLocationAndSignUp();
         isBreedEnabled();
         fillPetInformation("Cat", "Male", "Siamese");
-        spayedTransfered("No");
+        spayedTransfered("Not Sure");
         otherVet(false);
         selectAppointment(false);
         fillMoreInformation();

@@ -12,6 +12,7 @@ import org.testng.annotations.BeforeMethod;
 
 import static constants.CommonProperties.PROVET_EMAIL;
 import static constants.CommonTexts.*;
+import static constants.CreditCardVariations.VALID_CREDIT_CARD;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class OnBoardingFlowTest extends BaseWebTest {
@@ -205,7 +206,7 @@ public class OnBoardingFlowTest extends BaseWebTest {
         addPaymentPage = new AddPaymentPage();
         TakeScreenshot("OnBoarding");
         addPaymentPage.setNameOnCard("Salomon")
-                .setCardNumber(cardNumber)
+                .setCardNumber(VALID_CREDIT_CARD.getCreditCard())
                 .setExpiration("1255")
                 .setCvcCode("123")
                 .setAddressOnPayment("Address")

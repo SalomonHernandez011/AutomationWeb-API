@@ -80,7 +80,7 @@ public class EnterPetDetailsPage extends BasePageObject {
             spayedYes.click();
         }else if (option.equalsIgnoreCase("No")){
             spayedNo.click();
-        }else {
+        }else if (option.equalsIgnoreCase("Not Sure")){
             spayedNotSure.click();
         }
         return this;
