@@ -6,12 +6,16 @@ import com.assertthat.selenium_shutterbug.core.Shutterbug;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
+import com.google.gson.Gson;
 import dataProvider.ConfigFileReader;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
@@ -35,7 +39,8 @@ public class BaseWebTest {
                 .addArguments("--lang=en-US")
                 .addArguments("--disable-geolocation")
                 .addArguments("--incognito")
-                .addArguments("--deny-permission-prompts");
+                .addArguments("--deny-permission-prompts")
+                .addArguments("--auto-open-devtools-for-tabs");
         Configuration.browserCapabilities = options;
         configFileReader = new ConfigFileReader();
         Selenide.open(ConfigFileReader.getProperty(URL));

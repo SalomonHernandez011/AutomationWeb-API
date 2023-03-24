@@ -1,14 +1,14 @@
-package comtest.web.onBoarding;
+package comtest.web.onBoarding.creditCardErrors;
 
 import Util.DogBreedListGenerator;
 import comtest.OnBoardingFlowTest;
 import org.testng.annotations.Test;
 
-public class OnBoardingDogTest extends OnBoardingFlowTest {
+public class DeclinedCreditCardTest extends OnBoardingFlowTest {
     DogBreedListGenerator dogBreedListGenerator = new DogBreedListGenerator();
     private String dogBreed = dogBreedListGenerator.dogBreed();
     @Test
-    public void dogTest(){
+    public void dogTest() {
         callLandingPage();
         thirdPageView();
         getStartedPage();
@@ -22,9 +22,7 @@ public class OnBoardingDogTest extends OnBoardingFlowTest {
         generatePassword();
         enterSmsText();
         billingInfo();
-        addPaymentInformation("Valid");
+        addPaymentInformation("Declined");
         getCareLandingPage();
-        petProfileSection();
-        openProvet();
     }
 }

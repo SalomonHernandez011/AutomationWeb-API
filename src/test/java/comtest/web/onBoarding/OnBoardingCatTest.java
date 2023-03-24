@@ -17,13 +17,13 @@ public class OnBoardingCatTest extends OnBoardingFlowTest {
         isBreedEnabled();
         fillPetInformation("Cat", "Male", catBreed);
         spayedTransfered("Not Sure");
-        otherVet(false);
+        otherVet(true);
         selectAppointment(false);
         fillMoreInformation();
         generatePassword();
         enterSmsText();
         billingInfo();
-        addPaymentInformation();
+        addPaymentInformation("Valid");
         getCareLandingPage();
         petProfileSection();
         openProvet();

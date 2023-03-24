@@ -20,7 +20,7 @@ public class OnBoardingDogFemaleTest extends OnBoardingFlowTest {
         generatePassword();
         enterSmsText();
         billingInfo();
-        addPaymentInformation();
+        addPaymentInformation("Valid");
         sickScreen();
         getCareLandingPage();
         openProvet();
