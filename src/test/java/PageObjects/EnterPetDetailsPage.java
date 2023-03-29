@@ -91,7 +91,7 @@ public class EnterPetDetailsPage extends BasePageObject {
         return this;
     }
     public EnterPetDetailsPage uploadImage(){
-        uploadPhoto.sendKeys("C:\\Users\\Salomon\\Pictures\\220805-border-collie-play-mn-1100-82d2f1.jpg");
+        uploadPhoto.sendKeys(System.getProperty("user.dir")+"/Pictures/collie.jpg");
         return this;
     }
     public EnterPetDetailsPage enterBreed(String breed){

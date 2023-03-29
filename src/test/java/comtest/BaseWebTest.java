@@ -1,5 +1,6 @@
 package comtest;
 
+import Util.BrowserOptions;
 import com.assertthat.selenium_shutterbug.core.Capture;
 import com.assertthat.selenium_shutterbug.core.Shutterbug;
 import com.codeborne.selenide.Configuration;
@@ -22,22 +23,7 @@ public class BaseWebTest {
     ConfigFileReader configFileReader;
     @BeforeMethod(alwaysRun = true)
     public void startBrowser() {
-//        System.setProperty("chromeoptions.mobileEmulation", "deviceName=Nexus 5");
-        Map<String, Object> deviceMetrics = new HashMap<>();
-        deviceMetrics.put("width", 390);
-        deviceMetrics.put("height", 844);
-        deviceMetrics.put("pixelRatio", 1.0);
-        Map<String, Object> mobileEmulation = new HashMap<>();
-        mobileEmulation.put("deviceMetrics", deviceMetrics);
-        mobileEmulation.put("userAgent", "Mozilla/5.0 (Linux; Android 11; Pixel 5 Build/RQ3A.210805.001.A1; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/92.0.4515.159 Mobile Safari/537.36");
-        ChromeOptions options = new ChromeOptions()
-                .setExperimentalOption("mobileEmulation", mobileEmulation)
-                .addArguments("--lang=en-US")
-                .addArguments("--disable-geolocation")
-                .addArguments("--incognito")
-                .addArguments("--deny-permission-prompts")
-                .addArguments("--auto-open-devtools-for-tabs");
-        Configuration.browserCapabilities = options;
+        Configuration.browserCapabilities = BrowserOptions.getChromeOptions();
         configFileReader = new ConfigFileReader();
         Selenide.open(ConfigFileReader.getProperty(URL));
         WebDriverRunner.getWebDriver().manage().window().maximize();
