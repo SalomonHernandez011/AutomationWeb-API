@@ -1,21 +1,17 @@
 package comtest;
 
-import Util.AllureScreenShooter;
 import com.assertthat.selenium_shutterbug.core.Capture;
 import com.assertthat.selenium_shutterbug.core.Shutterbug;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
-import com.google.gson.Gson;
 import dataProvider.ConfigFileReader;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Listeners;
 
-import java.io.FileWriter;
-import java.io.IOException;
+
+
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;

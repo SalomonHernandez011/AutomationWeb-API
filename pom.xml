@@ -28,7 +28,7 @@
         <dependency>
             <groupId>com.codeborne</groupId>
             <artifactId>selenide</artifactId>
-            <version>6.12.2</version>
+            <version>6.12.4</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -43,10 +43,11 @@
             <version>3.23.1</version>
             <scope>test</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.testng/testng -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>7.7.0</version>
+            <version>7.7.1</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -145,14 +146,6 @@
             <artifactId>rest-assured</artifactId>
             <version>4.3.0</version>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured-common -->
-        <dependency>
-            <groupId>io.rest-assured</groupId>
-            <artifactId>rest-assured</artifactId>
-            <version>4.4.0</version>
-            <scope>test</scope>
-        </dependency>
         <!-- https://mvnrepository.com/artifact/com.assertthat/selenium-shutterbug -->
         <dependency>
             <groupId>com.assertthat</groupId>
@@ -211,11 +204,11 @@
             <artifactId>jaxb-runtime</artifactId>
             <version>3.0.2</version>
         </dependency>
-
+        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
         <dependency>
-            <groupId>com.squareup.okhttp3</groupId>
-            <artifactId>okhttp</artifactId>
-            <version>4.9.3</version>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>4.8.3</version>
         </dependency>
     </dependencies>
 
