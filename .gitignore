@@ -5,6 +5,7 @@ target/
 screenshots/
 allure-results/
 Pictures
+src/main/resources/credentials
 ### IntelliJ IDEA ###
 .idea/modules.xml
 .idea/jarRepositories.xml

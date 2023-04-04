@@ -90,8 +90,12 @@ public class EnterPetDetailsPage extends BasePageObject {
         femaleOption.click();
         return this;
     }
-    public EnterPetDetailsPage uploadImage(){
-        uploadPhoto.sendKeys(System.getProperty("user.dir")+"/Pictures/collie.jpg");
+    public EnterPetDetailsPage uploadImage(String pet){
+        if(pet.equalsIgnoreCase("dog")) {
+            uploadPhoto.sendKeys(System.getProperty("user.dir") + "/Pictures/collie.jpg");
+        }else if(pet.equalsIgnoreCase("cat")){
+            uploadPhoto.sendKeys(System.getProperty("user.dir") + "/Pictures/cat.jpg");
+        }
         return this;
     }
     public EnterPetDetailsPage enterBreed(String breed){
