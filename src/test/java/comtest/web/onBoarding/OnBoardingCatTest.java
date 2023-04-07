@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 public class OnBoardingCatTest extends OnBoardingFlowTest {
     CatBreedGenerator catBreedGenerator = new CatBreedGenerator();
-    private String catBreed = catBreedGenerator.catBreed();
+    private final String catBreed = catBreedGenerator.catBreed();
     @Test
     public void maleCatTest(){
         callLandingPage();

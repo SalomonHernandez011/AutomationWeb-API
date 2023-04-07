@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 public class OnBoardingDogTest extends OnBoardingFlowTest {
     DogBreedListGenerator dogBreedListGenerator = new DogBreedListGenerator();
-    private String dogBreed = dogBreedListGenerator.dogBreed();
+    private final String dogBreed = dogBreedListGenerator.dogBreed();
     @Test
     public void dogTest(){
         callLandingPage();
