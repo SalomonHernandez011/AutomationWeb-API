@@ -121,7 +121,7 @@ public class OnBoardingFlowTest extends BaseWebTest {
                 .selectPet(pet)
                 .selectGender(gender);
         enterPetDetailsPage.uploadImage(pet)
-                .setAge("1","2","3");
+                .setAge("","","21");
         assertThat(enterPetDetailsPage.breedEnabled())
                 .as("It should be disabled")
                 .isTrue();
