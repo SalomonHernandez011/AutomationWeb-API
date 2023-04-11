@@ -48,4 +48,33 @@ public class LogInApi {
 
         return jwtToken;
     }
+    // Method to extract ID from response
+    public String extractId(Response response) {
+        // Extract the ID from the response
+        String id = response.jsonPath().getString("id");
+
+        // Print the ID to the console
+        System.out.println("ID: " + id);
+
+        return id;
+    }
+    public String extractFirstName(Response response) {
+        // Extract the firstName from the response
+        String firstName = response.jsonPath().getString("firstName");
+
+        // Print the firstName to the console
+        System.out.println("First Name: " + firstName);
+
+        return firstName;
+    }
+    // Method to extract email from response
+    public String extractEmail(Response response) {
+        // Extract the email from the response
+        String email = response.jsonPath().getString("email");
+
+        // Print the email to the console
+        System.out.println("Email: " + email);
+
+        return email;
+    }
 }
