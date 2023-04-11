@@ -40,6 +40,7 @@ public class Example extends LogInApi {
             // Print the pretty-printed JSON
             System.out.println("Response body (pretty-printed):");
             System.out.println(prettyJson);
+            System.out.println("Response Status Code: " + response.getStatusCode());
         } else {
             System.out.println("Response body is empty or null.");
         }
