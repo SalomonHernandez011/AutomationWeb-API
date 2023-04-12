@@ -15,7 +15,6 @@ public class LogInApi {
     private static final String PASSWORD = "1234asdF@";
     private Response loginResponse; // Store login response for subsequent use
 
-    @BeforeMethod(alwaysRun = true)
     // Method to send login request and return response
     public Response sendLoginRequest(String username, String password) {
         if (loginResponse == null) {
