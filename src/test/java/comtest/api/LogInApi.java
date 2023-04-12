@@ -2,78 +2,73 @@ package comtest.api;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.testng.annotations.BeforeMethod;
 
+import java.util.Map;
+
 public class LogInApi {
+    private static final String BASE_URL = "https://dev.parkerandace.com";
+    private static final String ENDPOINT = "/api/v1/application/login";
+    private static final String USERNAME = "parkertestingace+505668518@gmail.com";
+    private static final String PASSWORD = "1234asdF@";
+    private Response loginResponse; // Store login response for subsequent use
+
     @BeforeMethod(alwaysRun = true)
     // Method to send login request and return response
     public Response sendLoginRequest(String username, String password) {
-        // Set base URL
-        RestAssured.baseURI = "https://dev.parkerandace.com";
+        if (loginResponse == null) {
+            // Set base URL
+            RestAssured.baseURI = BASE_URL;
 
-        // Set request body with username and password
-        String requestBody = "{ \"userName\": \"" + username + "\", \"password\": \"" + password + "\" }";
+            // Set request body with username and password
+            String requestBody = "{ \"userName\": \"" + username + "\", \"password\": \"" + password + "\" }";
 
-        // Send POST request to generate Bearer token
-        Response response = RestAssured.given()
-                .contentType(ContentType.JSON)
-                .body(requestBody)
-                .post("/api/v1/application/login");
+            // Send POST request to generate Bearer token
+            loginResponse = RestAssured.given()
+                    .contentType(ContentType.JSON)
+                    .body(requestBody)
+                    .post(ENDPOINT);
+        }
 
-        return response;
+        return loginResponse;
     }
 
-    // Method to extract jwtToken from response
-    public String extractJwtToken(Response response) {
-        // Check if response body is not null or empty
-        String responseBody = response.getBody().asString();
-        System.out.println(responseBody);
+    // Method to extract field value from response
+    public String extractField(Response response, String fieldName) {
+        // Extract the field value from the response
+        String fieldValue = response.jsonPath().getString(fieldName);
 
-        // Extract the jwtToken from the response
-        String jwtToken = response.jsonPath().getString("jwtToken");
+        // Print the field value to the console
+        System.out.println(fieldName + ": " + fieldValue);
 
-        // Print the jwtToken to the console
-        System.out.println("Bearer Token: " + jwtToken);
-
-        return jwtToken;
+        return fieldValue;
     }
 
     public String bearerGenerator() {
         // Send login request and get response
-        Response response = sendLoginRequest("parkertestingace+505668518@gmail.com", "1234asdF@");
+        if (loginResponse == null) {
+            sendLoginRequest(USERNAME, PASSWORD);
+        }
 
         // Extract jwtToken from response
-        String jwtToken = extractJwtToken(response);
+        String jwtToken = extractField(loginResponse, "jwtToken");
 
         return jwtToken;
     }
-    // Method to extract ID from response
-    public String extractId(Response response) {
-        // Extract the ID from the response
-        String id = response.jsonPath().getString("id");
+    public String extractEmail() {
+        // Send login request if loginResponse is null
+        if (loginResponse == null) {
+            sendLoginRequest(USERNAME, PASSWORD);
+        }
 
-        // Print the ID to the console
-        System.out.println("ID: " + id);
+        // Extract the "user" object from the stored login response
+        JsonPath jsonPath = loginResponse.jsonPath();
+        Map<String, Object> user = jsonPath.getMap("user");
 
-        return id;
-    }
-    public String extractFirstName(Response response) {
-        // Extract the firstName from the response
-        String firstName = response.jsonPath().getString("firstName");
-
-        // Print the firstName to the console
-        System.out.println("First Name: " + firstName);
-
-        return firstName;
-    }
-    // Method to extract email from response
-    public String extractEmail(Response response) {
-        // Extract the email from the response
-        String email = response.jsonPath().getString("email");
-
-        // Print the email to the console
-        System.out.println("Email: " + email);
+        // Extract the email from the "user" object
+        String email = (String) user.get("email");
 
         return email;
     }

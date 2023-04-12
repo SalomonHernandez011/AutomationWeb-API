@@ -8,10 +8,13 @@ import io.restassured.response.Response;
 public class Example extends LogInApi {
     private static LogInApi logInApi;
     private static String bearer;
+    private static String email;
     public static void main(String[] args) throws JsonProcessingException {
 
         logInApi = new LogInApi();
         bearer = logInApi.bearerGenerator();
+        email = logInApi.extractEmail();
+        System.out.println(email);
         // Set base URI
         String apiUrl = "https://dev.parkerandace.com/api/v1/appointment/pet-parent/5d309ac4-e494-425f-a9da-8e7b478b8899/confirmed/past/false";
 
