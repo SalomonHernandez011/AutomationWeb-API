@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
-import org.testng.annotations.BeforeMethod;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class Example extends LogInApi {
@@ -51,6 +51,11 @@ public class Example extends LogInApi {
             } else {
                 System.out.println("Response body is empty or null.");
             }
+
+            int statusCode = response.getStatusCode();
+
+            Assert.assertEquals(statusCode /*actual value*/, 200 /*expected value*/,
+                    "Correct status code returned");
         }
     }
 

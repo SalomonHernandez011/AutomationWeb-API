@@ -4,10 +4,8 @@ import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
-import org.testng.annotations.BeforeMethod;
 
 import java.util.Map;
-
 public class LogInApi {
     private static final String BASE_URL = "https://dev.parkerandace.com";
     private static final String ENDPOINT = "/api/v1/application/login";
