@@ -72,4 +72,19 @@ public class LogInApi {
 
         return email;
     }
+    public String extractId() {
+        // Send login request if loginResponse is null
+        if (loginResponse == null) {
+            sendLoginRequest(USERNAME, PASSWORD);
+        }
+
+        // Extract the "user" object from the stored login response
+        JsonPath jsonPath = loginResponse.jsonPath();
+        Map<String, Object> user = jsonPath.getMap("user");
+
+        // Extract the id from the "user" object
+        String id = (String) user.get("id");
+
+        return id;
+    }
 }
