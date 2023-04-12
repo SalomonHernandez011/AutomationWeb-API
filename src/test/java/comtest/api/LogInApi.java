@@ -1,5 +1,7 @@
 package comtest.api;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
@@ -27,8 +29,17 @@ public class LogInApi {
                     .contentType(ContentType.JSON)
                     .body(requestBody)
                     .post(ENDPOINT);
-        }
 
+            JsonPath jsonPath = loginResponse.jsonPath();
+            Map<String, Object> user = jsonPath.getMap("user");
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+            // Convert "user" Map object to JSON string
+            String json = gson.toJson(user);
+
+            // Print formatted JSON
+            System.out.println(json);
+        }
         return loginResponse;
     }
 

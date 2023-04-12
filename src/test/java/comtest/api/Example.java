@@ -32,25 +32,26 @@ public class Example extends LogInApi {
                     .header("Authorization", "Bearer " + bearer)
                     .when()
                     .get(apiUrl);
-            // Extract response body as String
-            String responseBody = response.getBody().asString();
+
+//            // Extract response body as String
+//            String responseBody = response.getBody().asString();
 
             // Check if response body is not empty or null
-            if (responseBody != null && !responseBody.isEmpty()) {
-                // Deserialize JSON into a Java object
-                ObjectMapper objectMapper = new ObjectMapper();
-                Object json = objectMapper.readValue(responseBody, Object.class);
-
-                // Serialize Java object back to JSON with indentation and formatting
-                String prettyJson = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(json);
-
-                // Print the pretty-printed JSON
-                System.out.println("Response body (pretty-printed):");
-                System.out.println(prettyJson);
-                System.out.println("Response Status Code: " + response.getStatusCode());
-            } else {
-                System.out.println("Response body is empty or null.");
-            }
+//            if (responseBody != null && !responseBody.isEmpty()) {
+//                // Deserialize JSON into a Java object
+//                ObjectMapper objectMapper = new ObjectMapper();
+//                Object json = objectMapper.readValue(responseBody, Object.class);
+//
+//                // Serialize Java object back to JSON with indentation and formatting
+//                String prettyJson = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(json);
+//
+//                // Print the pretty-printed JSON
+//                System.out.println("Response body (pretty-printed):");
+//                System.out.println(prettyJson);
+//                System.out.println("Response Status Code: " + response.getStatusCode());
+//            } else {
+//                System.out.println("Response body is empty or null.");
+//            }
 
             int statusCode = response.getStatusCode();
 
