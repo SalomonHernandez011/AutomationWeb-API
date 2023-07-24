@@ -44,8 +44,8 @@ public class OnBoardingFlowTest extends BaseWebTest {
     private String password = "1234asdF@";
     private String petBreed = "Collie";
     private String cardNumber = "4242424242424242";
-    public static final String ACCOUNT_SID = "ACf1b12f0aa5be0f10511cb307abb1acd2";
-    public static final String AUTH_TOKEN = "dfba90f015d9d088f4ca278da0a513c1";
+    public static final String ACCOUNT_SID = "";
+    public static final String AUTH_TOKEN = "";
 
     @BeforeMethod
     public void setup() {
