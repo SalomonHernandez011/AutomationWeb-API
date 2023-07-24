@@ -1,4 +1,4 @@
-# Parker-AceUIAutomation
+# API/UIAutomation
 ## 1. Environment requirements
 
 **Required:** Chrome browser, Java Development Kit 11 (JDK11) and maven 3 should be present on environment in order to develop and/or run the tests.
